@@ -27,7 +27,7 @@ void PhoneBook::op(std::string cmd)
 	else if (cmd == "EXIT")
 		std::exit(0);
 	else
-		std::cout << COLOR_RED << "Invalid command." << COLOR_RESET << std::endl;
+		std::cout << COLOR_RED << "Invalid command! Please follow these instructions:" << COLOR_RESET << std::endl;
 }
 
 static std::string check_empty(std::string msg)
@@ -43,9 +43,8 @@ static std::string check_empty(std::string msg)
 		if (input.empty() == 0)
 			return (input);
 		else
-			std::cout << COLOR_RED << "Invalid input!" << COLOR_BLUE << std::endl;
+			std::cout << COLOR_RED << "\nInvalid input!" << COLOR_RESET << std::endl;
 	}
-	std::cout << COLOR_RESET;
 }
 
 void PhoneBook::_add()
@@ -55,7 +54,7 @@ void PhoneBook::_add()
 		this->_index += 1;
 	else
 		this->_index = 0;
-	msg = "Insert first name: ";
+	msg = "\nInsert first name: ";
 	this->_getContact()[this->_index].setFirstName(check_empty(msg));
 	msg = "Inset last name: ";
 	this->_getContact()[this->_index].setLastName(check_empty(msg));
@@ -83,7 +82,7 @@ static std::string truncate(std::string str)
 
 static void phoneBook_header(void)
 {
-	std::cout << COLOR_GREEN;
+	std::cout << COLOR_BRIGHT_MAGENTA << std::endl;
 	std::cout << std::setfill(' ') << std::setw(10) << truncate("Index") << '|';
 	std::cout << std::setfill(' ') << std::setw(10) << truncate("First Name") << '|';
 	std::cout << std::setfill(' ') << std::setw(10) << truncate("Last Name") << '|';
@@ -93,7 +92,7 @@ static void phoneBook_header(void)
 
 static void phoneBook_body(Contact record, int index)
 {
-	std::cout << COLOR_GREEN;
+	std::cout << COLOR_MAGENTA;
 	std::cout << std::setfill(' ') << std::setw(10) << index << '|';
 	std::cout << std::setfill(' ') << std::setw(10) << truncate(record.getFirstName()) << '|';
 	std::cout << std::setfill(' ') << std::setw(10) << truncate(record.getLastName()) << '|';
@@ -120,12 +119,17 @@ void PhoneBook::_search() const
 		index = std::stoi(input);
 		if (index >= 0 && index < this->_count)
 		{
-			phoneBook_header();
-			phoneBook_body(this->_record[index], index);
+			std::cout << COLOR_CYAN;
+			std::cout << "\nFirst name: " << _record[index].getFirstName() << std::endl;
+			std::cout << "Last name: " << _record[index].getLastName() << std::endl;
+			std::cout << "Nickname name: " << _record[index].getNickName() << std::endl;
+			std::cout << "Phone number: " << _record[index].getNumber() << std::endl;
+			std::cout << "Darkest secret: " << _record[index].getSecret() << std::endl;
+			std::cout << COLOR_RESET << std::endl;
 			return ;
 		}
 		else
-			std::cout << "Invalid input!" << std::endl;
+			std::cout << COLOR_RED << "Invalid index!" << COLOR_RESET << std::endl;
 	}
 	catch(...)
 	{

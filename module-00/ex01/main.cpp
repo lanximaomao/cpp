@@ -9,9 +9,9 @@ int	main(void)
 	while (42)
 	{
 		std::cout << COLOR_GREEN;
-		std::cout << "Write \"ADD\" to add a new contact." << std::endl;
+		std::cout << "\nWrite \"ADD\" to add a new contact." << std::endl;
 		std::cout << "Write \"SEARCH\" to search for a contact" << std::endl;
-		std::cout << "Write \"EXIT\" to exit the PhoneBook." << std::endl;
+		std::cout << "Write \"EXIT\" to exit the PhoneBook.\n" << std::endl;
 		std::cout << COLOR_RESET;
 		std::getline(std::cin, cmd, '\n');
 		if (std::cin.eof() == 1)
