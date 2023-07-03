@@ -39,7 +39,10 @@ static std::string check_empty(std::string msg)
 		std::cout << msg;
 		std::getline(std::cin, input, '\n');
 		if (std::cin.eof())
+		{
+			std::cout << COLOR_RESET << std::endl;
 			std::exit(0);
+		}
 		if (input.empty() == 0)
 			return (input);
 		else
