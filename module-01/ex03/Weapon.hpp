@@ -13,7 +13,7 @@ class Weapon
 		std::string&	getType();// returns const ref to type
 
 	private:
-		std::string _type;
+		std::string		_type;
 
 };
 

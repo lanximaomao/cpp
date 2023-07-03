@@ -8,8 +8,10 @@ class HumanB
 	public:
 		HumanB(std::string _name);
 		~HumanB(void);
+
 		void		attack();
 		void		setWeapon(Weapon* new_weapon);
+
 	private:
 		std::string	_name;
 		Weapon*		_first_weapon;

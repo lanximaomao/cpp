@@ -1,0 +1,20 @@
+.cpp #Replace.cpp
+OBJ = $(SRCS:.cpp=.o)
+
+.PHONY: all hive42 fhive42 re
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	c++ -o $(NAME) $(OBJ) $(FLAGS)
+
+$(OBJ): $(SRCS)
+	c++ -c  $(SRCS) $(FLAGS)
+
+hive42:
+	rm -f $(OBJ)
+
+fhive42: hive42
+	rm -f $(NAME)
+
+re: fhive42

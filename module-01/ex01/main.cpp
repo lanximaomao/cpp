@@ -4,6 +4,7 @@
 ** when I accidently delete the army in the zombieHorde
 ** why my zombie army still annouce?
 */
+
 int main()
 {
 	int army_size;

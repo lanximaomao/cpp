@@ -1,7 +1,6 @@
 #include "HumanA.hpp"
 
 HumanA::HumanA(std::string _name, Weapon &w):_name(_name), _first_weapon(w) {}
-
 HumanA::~HumanA() {}
 
 void HumanA::setWeapon(Weapon& new_weapon)

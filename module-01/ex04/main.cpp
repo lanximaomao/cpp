@@ -65,9 +65,11 @@ int main(int argc, char** argv)
 	Replace sed;
 
 	sed.filename = std::string(argv[1]);
-	sed.old_str = argv[2];
-	sed.new_str = argv[3];
+	sed.old_str = std::string(argv[2]);
+	sed.new_str = std::string(argv[3]);
+
 	//check if filename is valid
+
 	std::ifstream sourceFile(sed.filename);
 	if (sourceFile.is_open())
 	{
