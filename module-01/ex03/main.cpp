@@ -16,6 +16,7 @@ int main()
 		HumanB jim("Jim");
 		jim.attack();
 		jim.setWeapon(&club);
+		jim.attack();
 		club.setType("Crazybanana");
 		jim.attack();
 		return 0;

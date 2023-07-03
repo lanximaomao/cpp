@@ -6,7 +6,7 @@ static int if_match(std::string buf, std::string target)
 {
 	for (size_t i = 0; i < buf.length(); i++)
 	{
-		std::cout << "buf=" << buf << "; len=" << buf.length() << std::endl;
+		//std::cout << "buf=" << buf << "; len=" << buf.length() << std::endl;
 		for (size_t j = 0; j < target.length() - 1; j++)
 		{
 			//std::cout << i << " && " << j << std::endl;
@@ -31,7 +31,7 @@ void		Replace::callReplace(std::ifstream *sourceFile, std::ofstream *destFile)
 
 	while (std::getline(*sourceFile, buf, lastChar))
 	{
-		std::cout << "buf=" << buf << std::endl;
+		//std::cout << "buf=" << buf << std::endl;
 		if (buf.length() + 1 >= this->old_str.length())
 		{
 			int i = if_match(buf, this->old_str);
@@ -39,7 +39,7 @@ void		Replace::callReplace(std::ifstream *sourceFile, std::ofstream *destFile)
 			{
 				std::string before;
 
-				std::cout << "match! buf = " << buf << std::endl;
+				//std::cout << "match! buf = " << buf << std::endl;
 				if (i > 0)
 					before = buf.substr(0, i);
 				else
@@ -63,7 +63,8 @@ int main(int argc, char** argv)
 	}
 	//parsing
 	Replace sed;
-	sed.filename = argv[1];
+
+	sed.filename = std::string(argv[1]);
 	sed.old_str = argv[2];
 	sed.new_str = argv[3];
 	//check if filename is valid

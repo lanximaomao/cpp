@@ -3,20 +3,12 @@
 #include <iomanip>
 #include <string>
 
-// substr(0, 10), 10 means len not index
-
 PhoneBook::PhoneBook(void): _index(-1), _count(0){}
-PhoneBook::~PhoneBook(void){}
+PhoneBook::~PhoneBook(void) {}
 
-int PhoneBook::getTotal(void)
-{
-	return (this->_count);
-}
+int PhoneBook::getTotal(void) { return (this->_count); }
 
-Contact *PhoneBook::_getContact(void)
-{
-	return (this->_record);
-}
+Contact *PhoneBook::_getContact(void) { return (this->_record); }
 
 void PhoneBook::op(std::string cmd)
 {
@@ -27,13 +19,13 @@ void PhoneBook::op(std::string cmd)
 	else if (cmd == "EXIT")
 		std::exit(0);
 	else
-		std::cout << COLOR_RED << "Invalid command! Please follow these instructions:" << COLOR_RESET << std::endl;
+		std::cout << "Invalid command! Please follow these instructions:" << std::endl;
 }
 
 static std::string check_empty(std::string msg)
 {
 	std::string input;
-	std::cout << COLOR_BLUE;
+	std::cout << COLOR_BRIGHT_BLUE;
 	while (42)
 	{
 		std::cout << msg;
@@ -44,9 +36,12 @@ static std::string check_empty(std::string msg)
 			std::exit(0);
 		}
 		if (input.empty() == 0)
+		{
+			std::cout << COLOR_RESET;
 			return (input);
+		}
 		else
-			std::cout << COLOR_RED << "\nInvalid input!" << COLOR_RESET << std::endl;
+			std::cout << "\nInvalid input!" << std::endl;
 	}
 }
 
@@ -85,7 +80,7 @@ static std::string truncate(std::string str)
 
 static void phoneBook_header(void)
 {
-	std::cout << COLOR_BRIGHT_MAGENTA << std::endl;
+	std::cout << COLOR_MAGENTA << std::endl;
 	std::cout << std::setfill(' ') << std::setw(10) << truncate("Index") << '|';
 	std::cout << std::setfill(' ') << std::setw(10) << truncate("First Name") << '|';
 	std::cout << std::setfill(' ') << std::setw(10) << truncate("Last Name") << '|';
@@ -132,7 +127,7 @@ void PhoneBook::_search() const
 			return ;
 		}
 		else
-			std::cout << COLOR_RED << "Invalid index!" << COLOR_RESET << std::endl;
+			std::cout << "Invalid index!" << std::endl;
 	}
 	catch(...)
 	{

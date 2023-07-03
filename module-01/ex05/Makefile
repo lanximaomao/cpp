@@ -1,6 +1,6 @@
-NAME = std_string
+NAME = harl
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp
+SRCS = main.cpp Harl.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 .PHONY: all clean fclean re

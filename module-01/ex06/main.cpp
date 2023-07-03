@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 		return(1);
 	}
 	Harl h1;
-	h1.complain_filter(argv[1]);
+	h1.complain_filter(std::string(argv[1]));
 	return (0);
 }
 

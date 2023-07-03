@@ -1,13 +1,12 @@
 #include <iostream>
 
 /*
-**  static_cast is a type of casting operator in C++ that performs
-**  compile-time type conversions. It allows you to convert between
-**  compatible types explicitly.
+** static_cast is a type of casting operator in C++ that performs compile-time type conversions.
+** It allows you to convert between compatible types explicitly.
 **
-** 	toupper function needs to have an unsigned char type as input
-** 	Note that the std::toupper function returns an integer value rather than a character directly.
-** 	To convert the returned value back to a character, you can simply assign it to a char variable.
+** Noted that the std::toupper function takes unsigned char as an input and returns an integer.
+** By giving an negative value to toupper, it will not create exception but will exhibit undefined behavior.
+** To convert the returned value back to a character, you can simply assign it to a char variable.
 */
 
 int main(int argc, char** argv)

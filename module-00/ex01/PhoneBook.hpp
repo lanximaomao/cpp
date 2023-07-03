@@ -15,11 +15,12 @@ class PhoneBook
 	Contact*	_getContact(void);
 	void		_add(void);
 	void		_search(void) const;
+	int			getTotal(void);
+
   public:
 	PhoneBook(void);
 	~PhoneBook(void);
 	void		op(std::string op);
-	int			getTotal(void);
 };
 
 #endif
