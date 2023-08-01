@@ -7,7 +7,7 @@ class Harl
 {
 	public:
 		void complain(std::string level) const;
-		void complain_filter(std::string filter_level) const;
+		//void complain_filter(std::string filter_level) const;
 
 	private:
 		void _debug(void) const;

@@ -3,26 +3,32 @@
 
 std::string		replace(std::string line, std::string old_str, std::string new_str)
 {
-	int pos = 0;
+	size_t pos = 0;
 
-	//std::cout << line << std::endl;
-	//std::cout << old_str << std::endl;
-	//std::cout << new_str << std::endl;
-	while (line.find(old_str, pos) != std::string::npos)
+	while (1)
 	{
-		line.erase(pos, old_str.length());
-		std::cout << line << std::endl;
-		line.insert(pos, new_str);
-		std::cout << line << std::endl;
-		pos += new_str.length();
-		std::cout << "pos=" << pos << std::endl;
+		pos = line.find(old_str, pos);
+		if (pos != std::string::npos)
+		{
+			line.erase(pos, old_str.length());
+			if (!new_str.empty())
+				line.insert(pos, new_str);
+			pos += new_str.length();
+		}
+		else
+			return (line);
 	}
+	std::cout << "exiting from replace" << std::endl;
 	return(line);
 }
 
-// handel unexpected inputs and errors
-// std::ios::out | std::ios::trunc means if the file should be open for output and if the file exisit
-// it should be overwritten.
+/*
+**  edge case:
+**  old or new str are empty
+**  file overwrite
+**  old_str is a newline character
+**  extremely large file
+*/
 int main(int argc, char** argv)
 {
 	if (argc != 4)
@@ -35,16 +41,17 @@ int main(int argc, char** argv)
 	std::string old_str = std::string(argv[2]);
 	std::string new_str = std::string (argv[3]);
 	std::ifstream sourceFile(filename);
-
-	if (sourceFile)
+	if (sourceFile.good())
 	{
 		std::ofstream destFile(filename.append(".replace"));
-		if (destFile)
+		if (destFile.good())
 		{
-			while (getline(sourceFile,line))
+			if (old_str.empty())
+				return (0);
+			while (getline(sourceFile,line, '\n'))
 			{
-
-				line.append("\n");
+				if (!sourceFile.eof())
+					line.append("\n");
 				line = replace(line, old_str, new_str);
 				destFile << line;
 			}
@@ -53,7 +60,7 @@ int main(int argc, char** argv)
 		{
 			std::cout << "Failed to create the file." << std::endl;
 			sourceFile.close();
-			std::exit(1);
+			return (1);
 		}
 		sourceFile.close();
 		destFile.close();

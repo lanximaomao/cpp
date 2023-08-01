@@ -1,6 +1,5 @@
 #include "Harl.hpp"
 
-// std::mem_fun_ref
 int main()
 {
 	Harl h1;
