@@ -1,6 +1,6 @@
 NAME = sedder
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp #Replace.cpp
+SRCS = main.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 .PHONY: all clean fclean re
