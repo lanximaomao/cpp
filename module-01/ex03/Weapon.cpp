@@ -5,7 +5,8 @@ Weapon::~Weapon(){}
 
 void Weapon::setType(std::string type)
 {
-	this->_type = type;
+	if (!type.empty())
+		this->_type = type;
 }
 
 std::string&	Weapon::getType()

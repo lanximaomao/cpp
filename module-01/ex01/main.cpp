@@ -5,6 +5,10 @@
 ** why my zombie army still annouce?
 */
 
+void		randomChump( std::string name );
+Zombie*		newZombie( std::string name );
+Zombie*		zombieHorde(int N, std::string name);
+
 int main()
 {
 	int army_size;

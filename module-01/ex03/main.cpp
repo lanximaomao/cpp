@@ -14,8 +14,7 @@ int main()
 	{
 		Weapon club = Weapon("banana");
 		HumanB jim("Jim");
-		jim.attack();
-		jim.setWeapon(&club);
+		jim.setWeapon(club);
 		jim.attack();
 		club.setType("Crazybanana");
 		jim.attack();

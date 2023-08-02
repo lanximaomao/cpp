@@ -58,8 +58,8 @@ int main(int argc, char** argv)
 		}
 		else
 		{
-			std::cout << "Failed to create the file." << std::endl;
 			sourceFile.close();
+			std::cout << "Failed to create dest file." << std::endl;
 			return (1);
 		}
 		sourceFile.close();

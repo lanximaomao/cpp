@@ -7,9 +7,9 @@ HumanB::HumanB(std::string _name):_name(_name)
 
 HumanB::~HumanB() {}
 
-void HumanB::setWeapon(Weapon* new_weapon)
+void HumanB::setWeapon(Weapon& new_weapon)
 {
-	this->_first_weapon = new_weapon;
+	this->_first_weapon = &new_weapon;
 }
 
 void HumanB::attack()

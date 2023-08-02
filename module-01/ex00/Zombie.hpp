@@ -17,7 +17,4 @@ class Zombie
 		std::string	getName() const;
 };
 
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
-
 #endif
