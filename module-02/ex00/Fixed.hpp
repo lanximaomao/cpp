@@ -3,28 +3,28 @@
 
 #include <iostream>
 
-// Orthodox Canonical class form
+//A member function int getRawBits( void ) const; that returns the raw value of the fixed-point value.
+//A member function void setRawBits( int const raw ); that sets the raw value of the fixed-point number.
 
 class Fixed
 {
 	public:
 
+		Fixed();
+		Fixed(const Fixed & other); // copy constructor
+		Fixed & operator=(const Fixed &other); // copy assignment operator overload
+		~Fixed();
+
+		int					getRawBits(void) const;
+		void				setRawBits(int const raw);
+
 	private:
-		int a_fix;
-		static const int fb = 8;
-	public:
 
+		int					_num;
+		static const int	_fractionalBits = 8;
 
+		std::ostream & operator<<(const Fixed &i);
 };
-
-// requirment for public members
-
-//◦ A default constructor that initializes the fixed-point number value to 0.
-//◦ A copy constructor.
-//◦ A copy assignment operator overload.
-//◦ A destructor.
-//◦ A member function int getRawBits( void ) const; that returns the raw value of the fixed-point value.
-//◦ A member function void setRawBits( int const raw ); that sets the raw value of the fixed-point number.
 
 
 #endif
