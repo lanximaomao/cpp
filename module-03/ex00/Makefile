@@ -1,6 +1,6 @@
-NAME = inside_or_not
+NAME = clapTrap
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp Fixed.cpp Point.cpp
+SRCS = main.cpp ClapTrap.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 .PHONY: all clean fclean re
