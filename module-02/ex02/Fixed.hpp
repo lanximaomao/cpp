@@ -9,8 +9,8 @@ class Fixed
 		Fixed(void);
 		Fixed(const int num);
 		Fixed(const float num);
-		Fixed(const Fixed & other); // copy constructor
-		Fixed & operator=(const Fixed &other); // copy assignment operator overload
+		Fixed(const Fixed & other);
+		Fixed& operator=(const Fixed &other);
 		~Fixed();
 
 		// 6 comparison operators: >, <, >=, <=, == and !=
@@ -27,15 +27,12 @@ class Fixed
 		Fixed operator*(const Fixed &other);
 		Fixed operator/(const Fixed &other);
 
-		// 4 increment/decrement (pre-increment and post-increment,
-		// pre-decrement and post-decrement) operators, that will increase or
-		// decrease the fixed-point value from the smallest representable ε such as 1 + ε > 1.
-		// what?
-		Fixed &operator++(void);
-		Fixed &operator--(void);
-		Fixed operator++(int);
-		Fixed operator--(int);
-
+		// 4 increment/decrement (pre-increment and post-increment
+		
+		Fixed &operator++(void); //  Pre-increment
+		Fixed operator++(int); // post-increment
+		Fixed &operator--(void); // pre-decrement
+		Fixed operator--(int); // post-decrement
 
 		// what is static and static const?
 		static Fixed		&min(Fixed &f1, Fixed &f2);
@@ -53,6 +50,7 @@ class Fixed
 		static const int	_fractionalBits = 8;
 };
 
-std::ostream &operator<<(std::ostream &output, const Fixed &i); // why this cannot placed as a member function?
+// why this cannot placed as a member function?
+std::ostream &operator<<(std::ostream &output, const Fixed &i);
 
 #endif

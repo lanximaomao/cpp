@@ -9,8 +9,8 @@ class Fixed
 		Fixed(void);
 		Fixed(const int num);
 		Fixed(const float num);
-		Fixed(const Fixed & other); // copy constructor
-		Fixed & operator=(const Fixed &other); // copy assignment operator overload
+		Fixed(const Fixed & other);
+		Fixed& operator=(const Fixed &other);
 		~Fixed();
 
 		int		toInt( void ) const;
@@ -24,6 +24,7 @@ class Fixed
 		static const int	_fractionalBits = 8;
 };
 
-std::ostream &operator<<(std::ostream &output, const Fixed &i); // why this cannot placed as a member function?
+// why this cannot placed as a member function?
+std::ostream &operator<<(std::ostream &output, const Fixed &i);
 
 #endif

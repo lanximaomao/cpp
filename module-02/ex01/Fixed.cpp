@@ -9,19 +9,19 @@ Fixed::Fixed(void): _fixedPoint(0)
 Fixed::Fixed(int const num)
 {
 	std::cout << "Parametric constructor called with an int" << std::endl;
-	_fixedPoint = num << _fractionalBits; //?
+	_fixedPoint = num << _fractionalBits;
 }
 
 Fixed::Fixed(float const num)
 {
 	std::cout << "Parametric constructor called with a float" << std::endl;
-	_fixedPoint = std::roundf(num * (1 << _fractionalBits));//?
+	_fixedPoint = std::roundf(num * (1 << _fractionalBits));
 }
 
 Fixed::Fixed(const Fixed & other)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = other; // here the operator overload is called
+	*this = other;
 }
 
 float Fixed::toFloat(void) const
@@ -39,7 +39,7 @@ Fixed & Fixed::operator=(const Fixed &other)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 
-	if(this != &other) // if they doesnot share the same address
+	if(this != &other)
 		setRawBits(other.getRawBits());
 	return(*this);
 }
@@ -60,7 +60,7 @@ void Fixed::setRawBits(int const raw)
 	_fixedPoint = raw;
 }
 
-std::ostream & operator<<(std::ostream &output, const Fixed &fixed)
+std::ostream& operator<<(std::ostream &output, const Fixed &fixed)
 {
 	output << fixed.toFloat();
 	return (output);
