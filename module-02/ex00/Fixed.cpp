@@ -1,14 +1,15 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed(void): _fixedPoint(0)
+Fixed::Fixed(): _fixedPoint(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
+/*  here the operator overload is called */
 Fixed::Fixed(const Fixed& other)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = other; // here the operator overload is called
+	*this = other;
 }
 
 Fixed& Fixed::operator=(const Fixed &other)
@@ -22,7 +23,7 @@ Fixed& Fixed::operator=(const Fixed &other)
 	return(*this);
 }
 
-Fixed::~Fixed(void)
+Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
 }
@@ -33,7 +34,7 @@ std::ostream& operator<<(std::ostream &output, const Fixed &i)
 	return (output);
 }
 
-int Fixed::getRawBits(void) const
+int Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (_fixedPoint);

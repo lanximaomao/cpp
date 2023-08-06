@@ -1,7 +1,7 @@
 #include "Color.hpp"
 #include "PhoneBook.hpp"
 
-int	main(void)
+int	main()
 {
 	PhoneBook	phonebook;
 

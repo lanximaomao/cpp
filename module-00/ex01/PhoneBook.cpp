@@ -3,12 +3,12 @@
 #include <iomanip>
 #include <string>
 
-PhoneBook::PhoneBook(void): _index(-1), _count(0){}
-PhoneBook::~PhoneBook(void) {}
+PhoneBook::PhoneBook(): _index(-1), _count(0){}
+PhoneBook::~PhoneBook() {}
 
-int PhoneBook::getTotal(void) { return (this->_count); }
+int PhoneBook::getTotal() { return (this->_count); }
 
-Contact *PhoneBook::_getContact(void) { return (this->_record); }
+Contact *PhoneBook::_getContact() { return (this->_record); }
 
 void PhoneBook::op(std::string cmd)
 {
@@ -78,7 +78,7 @@ static std::string truncate(std::string str)
 		return (str);
 }
 
-static void phoneBook_header(void)
+static void phoneBook_header()
 {
 	std::cout << COLOR_MAGENTA << std::endl;
 	std::cout << std::setfill(' ') << std::setw(10) << truncate("Index") << '|';

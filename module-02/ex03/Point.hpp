@@ -8,7 +8,7 @@ class Point
 		float	_y;
 
 	public:
-		Point(void);
+		Point();
 		Point(const float x, const float y);
 		Point(Point &other);
 		Point &operator=(const Point &other);

@@ -12,14 +12,14 @@ class PhoneBook
 	int			_index;
 	int			_count;
 	Contact		_record[MAX_CONTACT];
-	Contact*	_getContact(void);
-	void		_add(void);
-	void		_search(void) const;
-	int			getTotal(void);
+	Contact*	_getContact();
+	void		_add();
+	void		_search() const;
+	int			getTotal();
 
   public:
-	PhoneBook(void);
-	~PhoneBook(void);
+	PhoneBook();
+	~PhoneBook();
 	void		op(std::string op);
 };
 

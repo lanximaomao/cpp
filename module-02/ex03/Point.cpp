@@ -2,7 +2,7 @@
 #include "Point.hpp"
 #include <iostream>
 
-Point::Point(void): _x(0), _y(0) {}
+Point::Point(): _x(0), _y(0) {}
 Point::~Point() {}
 
 Point::Point(const float x, const float y)

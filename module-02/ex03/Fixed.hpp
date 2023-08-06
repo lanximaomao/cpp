@@ -6,7 +6,7 @@ class Fixed
 {
 	public:
 
-		Fixed(void);
+		Fixed();
 		Fixed(const int num);
 		Fixed(const float num);
 		Fixed(const Fixed & other);
@@ -28,10 +28,10 @@ class Fixed
 		Fixed operator/(const Fixed &other);
 
 		// 4 increment/decrement (pre-increment and post-increment
-		
-		Fixed &operator++(void); //  Pre-increment
+
+		Fixed &operator++(); //  Pre-increment
 		Fixed operator++(int); // post-increment
-		Fixed &operator--(void); // pre-decrement
+		Fixed &operator--(); // pre-decrement
 		Fixed operator--(int); // post-decrement
 
 		// what is static and static const?
@@ -42,7 +42,7 @@ class Fixed
 
 		int		toInt( void ) const;
 		float	toFloat( void ) const;
-		int		getRawBits(void) const;
+		int		getRawBits() const;
 		void	setRawBits(int const raw);
 
 	private:

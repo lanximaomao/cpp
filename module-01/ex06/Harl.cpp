@@ -58,22 +58,22 @@ void Harl::complain(std::string level) const
 	std::cout << COLOR_BRIGHT_GREEN << "Amazing, Harl has no complain!" << COLOR_RESET << std::endl;
 }
 
-void Harl::_debug(void) const
+void Harl::_debug() const
 {
 	std::cout << COLOR_YELLOW << "[DEBUG] Harl sends a DEBUG message!" << COLOR_RESET << std::endl;
 }
 
-void Harl::_info(void) const
+void Harl::_info() const
 {
 	std::cout << COLOR_RED << "[INFO] Harl sends a INFO message!" << COLOR_RESET << std::endl;
 }
 
-void Harl::_warning(void) const
+void Harl::_warning() const
 {
 	std::cout << COLOR_MAGENTA << "[WARNING] Harl sends a WARNING message!" << COLOR_RESET << std::endl;
 }
 
-void Harl::_error(void) const
+void Harl::_error() const
 {
 	std::cout << COLOR_BLUE << "[ERROR] Harl sends an ERROR message!" << COLOR_RESET << std::endl;
 }

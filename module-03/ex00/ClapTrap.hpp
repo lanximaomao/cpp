@@ -10,7 +10,7 @@ class ClapTrap
 		int _attackDamage;
 
 	public:
-		ClapTrap(void);
+		ClapTrap();
 		ClapTrap(ClapTrap &other);
 		ClapTrap &operator=(ClapTrap &other);
 		~ClapTrap();
@@ -21,9 +21,9 @@ class ClapTrap
 		void setAttackDamage(int attach);
 
 		//getters
-		int getHitPoints(void) const;
-		int getEnergyPoints(void) const;
-		int getAttackDamage(void) const;
+		int getHitPoints() const;
+		int getEnergyPoints() const;
+		int getAttackDamage() const;
 
 		//member function
 		void attack(const std::string& target);
@@ -33,7 +33,7 @@ class ClapTrap
 
 # endif
 
-ClapTrap::ClapTrap(void):_hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap():_hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	//empty
 }

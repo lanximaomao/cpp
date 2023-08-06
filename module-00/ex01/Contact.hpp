@@ -13,8 +13,8 @@ class Contact
 		std::string	_number;
 
 	public:
-		Contact(void);
-		~Contact(void);
+		Contact();
+		~Contact();
 
 		void setFirstName(std::string _first_name);
 		void setLastName(std::string _last_name);
@@ -22,11 +22,11 @@ class Contact
 		void setSecret(std::string _secret);
 		void setNumber(std::string _number);
 
-		std::string	getFirstName(void) const;
-		std::string getLastName(void) const;
-		std::string getNickName(void) const;
-		std::string getSecret(void) const;
-		std::string getNumber(void) const;
+		std::string	getFirstName() const;
+		std::string getLastName() const;
+		std::string getNickName() const;
+		std::string getSecret() const;
+		std::string getNumber() const;
 };
 
 

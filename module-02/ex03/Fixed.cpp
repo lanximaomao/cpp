@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 #include <cmath>
 
-Fixed::Fixed(void): _fixedPoint(0)
+Fixed::Fixed(): _fixedPoint(0)
 {
 	//std::cout << "Default constructor called" << std::endl;
 }
@@ -26,13 +26,13 @@ Fixed::Fixed(const Fixed & other)
 	*this = other; // here the operator overload is called
 }
 
-float Fixed::toFloat(void) const
+float Fixed::toFloat() const
 {
 	float val = static_cast<float>(this->_fixedPoint) / (1 << _fractionalBits);
 	return (val);
 }
 
-int	Fixed::toInt(void) const
+int	Fixed::toInt() const
 {
 	return (_fixedPoint >> _fractionalBits);
 }
@@ -46,12 +46,12 @@ Fixed& Fixed::operator=(const Fixed &other)
 	return(*this);
 }
 
-Fixed::~Fixed(void)
+Fixed::~Fixed()
 {
 	//std::cout << "Destructor called" << std::endl;
 }
 
-int Fixed::getRawBits(void) const
+int Fixed::getRawBits() const
 {
 	//std::cout << "getRawBits member function called" << std::endl;
 	return (_fixedPoint);
@@ -132,13 +132,13 @@ Fixed Fixed::operator/(const Fixed &other)
 // Overload Increment and Decrement Operator
 // pre- is shallow copy and post- is deep copy
 
-Fixed&	Fixed::operator++(void) // pre-increment
+Fixed&	Fixed::operator++() // pre-increment
 {
 	++this->_fixedPoint;
 	return (*this);
 }
 
-Fixed&	Fixed::operator--(void) // pre-decrement
+Fixed&	Fixed::operator--() // pre-decrement
 {
 	--this->_fixedPoint;
 	return (*this);

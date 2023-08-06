@@ -6,7 +6,7 @@ class Fixed
 {
 	public:
 
-		Fixed(void);
+		Fixed();
 		Fixed(const int num);
 		Fixed(const float num);
 		Fixed(const Fixed & other);
@@ -15,7 +15,7 @@ class Fixed
 
 		int		toInt( void ) const;
 		float	toFloat( void ) const;
-		int		getRawBits(void) const;
+		int		getRawBits() const;
 		void	setRawBits(int const raw);
 
 	private:
@@ -24,7 +24,6 @@ class Fixed
 		static const int	_fractionalBits = 8;
 };
 
-// why this cannot placed as a member function?
 std::ostream &operator<<(std::ostream &output, const Fixed &i);
 
 #endif

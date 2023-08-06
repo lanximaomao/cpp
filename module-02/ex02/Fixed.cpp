@@ -1,71 +1,54 @@
 #include "Fixed.hpp"
 #include <cmath>
 
-Fixed::Fixed(void): _fixedPoint(0)
-{
-	//std::cout << "Default constructor called" << std::endl;
-}
+Fixed::Fixed(): _fixedPoint(0) { }
 
-// left shift by 8 bits so that the fractional part is all zeros.
+/* num *= 2 ^ 8*/
 Fixed::Fixed(const int num)
 {
-	//std::cout << "Parametric constructor called with an int" << std::endl;
 	_fixedPoint = num << _fractionalBits;
 }
 
-// num * 2^8
+/* num *= 2 ^ 8*/
 Fixed::Fixed(const float num)
 {
-	//std::cout << "Parametric constructor called with a float" << std::endl;
 	_fixedPoint = std::roundf(num * (1 << _fractionalBits));
 }
 
+/* here the operator overload is called */
 Fixed::Fixed(const Fixed & other)
 {
-	//std::cout << "Copy constructor called" << std::endl;
-	*this = other; // here the operator overload is called
+	*this = other;
 }
 
-float Fixed::toFloat(void) const
+float Fixed::toFloat() const
 {
 	float val = static_cast<float>(this->_fixedPoint) / (1 << _fractionalBits);
 	return (val);
 }
 
-int	Fixed::toInt(void) const
+int	Fixed::toInt() const
 {
 	return (_fixedPoint >> _fractionalBits);
 }
 
 Fixed& Fixed::operator=(const Fixed &other)
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
-
 	if(this != &other) // if they doesnot share the same address
 		setRawBits(other.getRawBits());
 	return(*this);
 }
 
-Fixed::~Fixed(void)
-{
-	//std::cout << "Destructor called" << std::endl;
-}
+Fixed::~Fixed() {}
 
-int Fixed::getRawBits(void) const
+int Fixed::getRawBits() const
 {
-	//std::cout << "getRawBits member function called" << std::endl;
 	return (_fixedPoint);
 }
 
 void Fixed::setRawBits(int const raw)
 {
 	_fixedPoint = raw;
-}
-
-std::ostream& operator<<(std::ostream &output, const Fixed &fixed)
-{
-	output << fixed.toFloat();
-	return (output);
 }
 
 // operator overload - comparison
@@ -99,7 +82,6 @@ bool Fixed::operator!=(const Fixed &other) const
 }
 
 // operator overload - arithmetic - create new object
-
 Fixed Fixed::operator+(const Fixed &other)
 {
 	float f1 = this->toFloat();
@@ -132,13 +114,13 @@ Fixed Fixed::operator/(const Fixed &other)
 // Overload Increment and Decrement Operator
 // pre- is shallow copy and post- is deep copy
 
-Fixed&	Fixed::operator++(void) // pre-increment
+Fixed&	Fixed::operator++() // pre-increment
 {
 	++this->_fixedPoint;
 	return (*this);
 }
 
-Fixed&	Fixed::operator--(void) // pre-decrement
+Fixed&	Fixed::operator--() // pre-decrement
 {
 	--this->_fixedPoint;
 	return (*this);
@@ -188,4 +170,10 @@ const Fixed&	Fixed::max(const Fixed &f1, const Fixed &f2)
 		return (f1);
 	else
 		return(f2);
+}
+
+std::ostream& operator<<(std::ostream &output, const Fixed &fixed)
+{
+	output << fixed.toFloat();
+	return (output);
 }

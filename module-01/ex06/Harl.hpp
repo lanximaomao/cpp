@@ -10,13 +10,13 @@ class Harl
 		void complain_filter(std::string filter_level) const;
 
 	private:
-		void _debug(void) const;
-		void _info(void) const;
-		void _warning(void) const;
-		void _error(void) const;
+		void _debug() const;
+		void _info() const;
+		void _warning() const;
+		void _error() const;
 };
 
 // all the functions satisfy this format can be represented by this function pointer
-typedef void (Harl::*t_complain_func)(void) const;
+typedef void (Harl::*t_complain_func)() const;
 
 #endif

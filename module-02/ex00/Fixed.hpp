@@ -7,12 +7,12 @@ class Fixed
 {
 	public:
 
-		Fixed(void);
+		Fixed();
 		Fixed(const Fixed& other); // copy constructor
 		Fixed & operator=(const Fixed &other); // copy assignment operator overload
 		~Fixed();
 
-		int					getRawBits(void) const;
+		int					getRawBits() const;
 		void				setRawBits(int const raw);
 
 	private:
