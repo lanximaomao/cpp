@@ -1,60 +1,36 @@
-#ifndef CLAP_TRAP_HPP
-# define CLAP_TRAP_HPP
-#include <iostream>
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
+#include <string>
 
 class ClapTrap
 {
 	private:
-		int	_hitPoints;
-		int	_energyPoints;
-		int _attackDamage;
+		std::string	_name;
+		int	_health;
+		int	_energy;
+		int _damage;
 
 	public:
-		ClapTrap();
-		ClapTrap(ClapTrap &other);
-		ClapTrap &operator=(ClapTrap &other);
+		ClapTrap(const std::string name);
+		ClapTrap(const ClapTrap &other);
 		~ClapTrap();
+		ClapTrap &operator=(const ClapTrap &other);
 
 		//setters
-		void setHitPoints(int hit);
-		void setEnergyPoints(int energy);
-		void setAttackDamage(int attach);
+		void setHealth(int health);
+		void setEnergy(int energy);
+		void setDamage(int damage);
 
 		//getters
-		int getHitPoints() const;
-		int getEnergyPoints() const;
-		int getAttackDamage() const;
+		std::string getName() const;
+		int getHealth() const;
+		int getEnergy() const;
+		int getDamage() const;
 
 		//member function
 		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
+		void take_damage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 };
 
 # endif
-
-ClapTrap::ClapTrap():_hitPoints(10), _energyPoints(10), _attackDamage(0)
-{
-	//empty
-}
-
-ClapTrap::~ClapTrap()
-{
-	// empty
-}
-
-ClapTrap::ClapTrap(ClapTrap &other)
-{
-	*this = other;
-}
-
-ClapTrap &ClapTrap::operator=(ClapTrap &other)
-{
-	if (this != &other)
-	{
-		_hitPoints = other.getHitPoints();
-		_energyPoints = other.getEnergyPoints();
-		_attackDamage = other.getAttackDamage();
-	}
-	return (*this);
-}
