@@ -13,6 +13,7 @@ Character::Character(const std::string name)
 }
 
 Character::Character(const Character& other)
+: ICharacter()
 {
 	*this = other;
 }

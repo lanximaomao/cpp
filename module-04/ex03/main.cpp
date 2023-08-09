@@ -6,9 +6,9 @@
 
 int	main(void)
 {
-	IMateriaSource	*src;
+	//IMateriaSource	*src;
 	//ICharacter		*me;
-	//AMateria		*tmp;
+	AMateria		*tmp;
 	//ICharacter		*bob;
 	//delete			bob;
 	//delete			me;

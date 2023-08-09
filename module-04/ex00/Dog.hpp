@@ -3,13 +3,9 @@
 
 #include <string>
 #include "Animal.hpp"
-#include "Brain.hpp"
 
 class Dog: public Animal
 {
-	private:
-		Brain* _tinyBrain;
-
 	public:
 		Dog();
 		Dog(const std::string name);
@@ -18,7 +14,6 @@ class Dog: public Animal
 		Dog& operator=(const Dog &other);
 
 		virtual void makeSound() const;
-		Brain* getBrain() const;
 };
 
 #endif

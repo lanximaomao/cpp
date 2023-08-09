@@ -1,6 +1,6 @@
 NAME = Animal
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 .PHONY: all clean fclean re
