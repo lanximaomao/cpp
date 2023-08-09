@@ -11,8 +11,8 @@ class Character: public ICharacter
 {
 	private:
 		std::string _name;
-		static const size_t _size_inventory = 4;
-		AMateria* _inventory[_size_inventory];
+		static const size_t _size = 4;
+		AMateria* _inventory[_size];
 
 	public:
 		Character(const std::string name);

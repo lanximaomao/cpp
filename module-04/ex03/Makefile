@@ -1,6 +1,6 @@
 NAME = game
-FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp AMateria.cpp #Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
+FLAGS = -std=c++98 #-Wall -Wextra -Werror
+SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 .PHONY: all clean fclean re

@@ -9,9 +9,7 @@
 class MateriaSource: public IMateriaSource
 {
 	private:
-		// What?
-		std::string _receipt[4];
-
+		AMateria* _receipt[4];
 
 	public:
 		MateriaSource();
@@ -22,6 +20,7 @@ class MateriaSource: public IMateriaSource
 		// member function
 		virtual void learnMateria(AMateria* other);
 		virtual AMateria* createMateria(std::string const & type);
+		virtual AMateria* getReceipt(int i) const;
 };
 
 #endif

@@ -34,10 +34,15 @@ Cat& Cat::operator=(const Cat &other)
 	{
 		_name = other._name;
 		_type = other._type;
-		_tinyBrain = other._tinyBrain;
+		delete _tinyBrain;
+		_tinyBrain = new Brain();
+		// copy brain ideas
+		for (size_t i = 0; i < 100; i++)
+			_tinyBrain[i] = other._tinyBrain[i];
 	}
 	return (*this);
 }
+
 
 Cat::~Cat()
 {

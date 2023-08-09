@@ -1,26 +1,33 @@
 #include <iostream>
 #include "MateriaSource.hpp"
 
-// init receipt
 MateriaSource::MateriaSource()
 : IMateriaSource()
 {
+	std::cout << "MateriaSource constructor called\n";
 	for (size_t i = 0; i < 4; i++)
-		_receipt[i] = "unknown";
+	{
+		_receipt[i] = 0; // init to null
+	}
 }
 
 MateriaSource::MateriaSource(const MateriaSource& other)
 : IMateriaSource()
 {
+	std::cout << "MateriaSource copy constructor called\n";
 	*this = other;
 }
 
+// free first?
 MateriaSource& MateriaSource::operator=(const MateriaSource &other)
 {
 	if (this != &other)
 	{
 		for (size_t i = 0; i < 4; i++)
+		{
+			delete _receipt[i];
 			_receipt[i] = other._receipt[i];
+		}
 	}
 	return (*this);
 }
@@ -28,7 +35,11 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &other)
 // free items
 MateriaSource::~MateriaSource()
 {
-	//
+	std::cout << "MateriaSource destructor called\n";
+	for (size_t i = 0; i < 4; i++)
+	{
+		delete _receipt[i];
+	}
 }
 
 // member function
@@ -38,8 +49,11 @@ void MateriaSource::learnMateria(AMateria* other)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
-		if (_receipt[i] == "unknown")
-			_receipt[i] = other->getType();
+		if (!_receipt[i]) // if it is null
+		{
+			_receipt[i] = other;
+			return ;
+		}
 	}
 }
 //Returns a new Materia. The latter is a copy of the Materia previously learned
@@ -48,13 +62,30 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
-		if (type == _receipt[i])
+		if (_receipt[i] && _receipt[i]->getType() == type)
 		{
-			if (type == "Cure")
-				return (new Cure());
-			else if (type == "Ice")
+			if (type == "ice")
+			{
+				//std::cout << "creating ice\n";
 				return (new Ice());
+			}
+			else if (type == "cure")
+			{
+				//std::cout << "creating cure\n";
+				return (new Cure());
+			}
 			return (0);
 		}
+		//std::cout << _receipt[i] << std::endl;
 	}
+	return (0);
 }
+
+AMateria* MateriaSource::getReceipt(int i) const
+{
+	if (i >= 0 && i <= 3)
+		return(_receipt[i]);
+	std::cout << "index should be between 0 - 3\n";
+	return (0);
+}
+

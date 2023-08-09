@@ -1,8 +1,15 @@
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
-#include <iostream>
 #include <string>
 #include "ICharacter.hpp"
+
+/*
+** this is called forward declaration
+** they are useful to solve mutual dependencies
+** it provide a way to introduce names of entities
+** before their full definitions
+*/
+class ICharacter;
 
 class AMateria
 {
@@ -12,14 +19,13 @@ class AMateria
 	public:
 		AMateria(const std::string &type);
 		AMateria(const AMateria &other);
-		~AMateria();
+		virtual ~AMateria();
 		AMateria& operator=(const AMateria &other);
 
-		// return the materia type
-		std::string const &getType() const;
+		const std::string& getType() const;
 
-		virtual AMateria *clone() const = 0;
-		virtual void use(ICharacter &target) = 0;
+		virtual AMateria* clone() const = 0;
+		virtual void use(ICharacter &target);
 };
 
 # endif

@@ -3,6 +3,10 @@
 #include <string>
 #include "AMateria.hpp"
 
+// forward declaration
+
+class AMateria;
+
 class ICharacter
 {
 	public:

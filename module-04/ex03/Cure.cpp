@@ -37,6 +37,6 @@ Cure* Cure::clone() const
 void Cure::use(ICharacter &target)
 {
 	std::cout << COLOR_BLUE;
-	std::cout << "Cure: heals " << target.getName() << "'s wounds" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 	std::cout << COLOR_RESET;
 }

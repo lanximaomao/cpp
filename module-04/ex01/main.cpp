@@ -47,6 +47,7 @@ int main()
 	std::string catMsg = "so long, my fish!";
 	heapCat->getBrain()->setIdeas(60, catMsg);
 	std::cout << heapCat->getBrain()->getIdeas(60) << std::endl;
+	delete heapCat;
 
 	std::cout << "\n\n===== Clean up =====\n\n";
 	for (size_t i = 0; i < animalCount; i++)
