@@ -5,12 +5,10 @@
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"
 
-// inside ScavTrap and FragTrap the inheritance specifier is changed to public virtual
-
 class DiamondTrap: public ScavTrap, public FragTrap
 {
 	private:
-
+		std::string	_name;
 	public:
 		DiamondTrap(const std::string name);
 		DiamondTrap(const DiamondTrap &other);

@@ -26,14 +26,13 @@ int main()
 	f1.attack("monster");
 	print_status(f1);
 
-	f1.take_damage(10);
+	f1.takeDamage(10);
 	print_status(f1);
 
 	f1.beRepaired(20);
 	print_status(f1);
 
-	// test overflow
-	f1.beRepaired(-20);
+	f1.beRepaired(20);
 	print_status(f1);
 
 	f1.highFivesGuys();

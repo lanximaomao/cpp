@@ -25,7 +25,7 @@ int main()
 	s1.attack("crazy frog");
 	print_status(s1);
 
-	s1.take_damage(4);
+	s1.takeDamage(4);
 	print_status(s1);
 
 	s1.beRepaired(100);

@@ -35,6 +35,6 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap: " << _name << "says: have five!\n";
+	std::cout << "FragTrap " << _name << "says: have five!\n";
 }
 

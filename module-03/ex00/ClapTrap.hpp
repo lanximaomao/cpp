@@ -29,7 +29,7 @@ class ClapTrap
 
 		//member function
 		void attack(const std::string& target);
-		void take_damage(unsigned int amount);
+		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 };
 

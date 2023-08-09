@@ -4,10 +4,11 @@
 // desired values are 100-50-30
 // the inheritance should follow the order defined in hpp file
 // the attribuates by default is from FragTrap
-DiamondTrap::DiamondTrap(std::string name)
-: ClapTrap(name + "_clap_name") // 10-10-0
+DiamondTrap::DiamondTrap(std::string name)// 10-10-0
+: ClapTrap(name + "ClapTrap")
 , ScavTrap(name) // 100-50-20
 , FragTrap(name) // 100-100-30
+, _name (name)
 {
 	std::cout << "DiamondTrap " << name << " created\n";
 	//_health = FragTrap::_health;
@@ -55,7 +56,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other)
 
 void DiamondTrap::whoAmI(void) const
 {
-	std::cout << "I am" << _name << "in DiamondTrap" << std::endl;
+	std::cout << "I am " << _name << " in DiamondTrap. But, also I am " << ClapTrap::_name << std::endl;
 }
 
 

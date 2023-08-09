@@ -21,27 +21,24 @@ int main()
 {
 	std::cout << "\n\n===== DiamondTrap =====\n\n";
 
-	DiamondTrap f1("Ah, diamond");
+	DiamondTrap f1("xx");
 	print_status(f1);
 
 	f1.attack("monster");
 	print_status(f1);
 
-	f1.take_damage(10);
+	f1.takeDamage(10);
 	print_status(f1);
 
 	f1.beRepaired(20);
 	print_status(f1);
 
-	// test overflow
-	f1.beRepaired(-20);
-	print_status(f1);
-
-	// inherited from ScavTrap
+	std::cout << "\n\n=== Inherited function ===\n\n";
 	f1.guardGate();
-
-	// inherited from FragTrap
 	f1.highFivesGuys();
+
+	std::cout << "\n\n=== its own member function ===\n\n";
+	f1.whoAmI();
 
 	return (0);
 }

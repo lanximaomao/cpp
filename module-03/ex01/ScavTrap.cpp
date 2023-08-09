@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ScavTrap.hpp"
+#include "Color.hpp"
 
-// these private attributes are treated as protected in ClapTrap class
 ScavTrap::ScavTrap(const std::string name): ClapTrap(name)
 {
 	std::cout << "ScavTrap " << name << " created\n";
@@ -32,6 +32,17 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << _name << " destoryed\n";
+}
+
+void ScavTrap::attack(const std::string& target)
+{
+	if (_health <= 0 || _energy <= 0)
+		return;
+	_energy --;
+	std::cout << COLOR_MAGENTA
+		<< "ScavTrap " << _name << " attacks "
+		<< target << ", causing " << _damage << " points of damage!\n"
+		<< COLOR_RESET;
 }
 
 void ScavTrap::guardGate()

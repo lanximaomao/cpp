@@ -82,7 +82,7 @@ void ClapTrap::attack(const std::string& target)
 		<< COLOR_RESET;
 }
 
-void ClapTrap::take_damage(unsigned int amount)
+void ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << COLOR_MAGENTA
 		<< "ClapTrap " << _name << " takes damage of "
