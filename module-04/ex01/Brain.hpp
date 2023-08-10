@@ -17,6 +17,7 @@ class Brain
 
 		std::string getIdeas(size_t i);
 		void setIdeas(size_t i, std::string &str);
+		//void copyIdeas(Brain &other);
 };
 
 #endif

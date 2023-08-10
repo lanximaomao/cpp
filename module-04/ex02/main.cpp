@@ -13,7 +13,7 @@ int main()
 	// this should not work
 	// Animal a = new Animal();
 
-	Dog* a = new Dog();
+	Animal* a = new Dog();
 	std::cout << a->getName() << std::endl;
 	a->makeSound();
 	delete a;

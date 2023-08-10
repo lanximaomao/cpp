@@ -3,6 +3,8 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
+
+// copy and assignment are deep copy
 Character::Character(const std::string name)
 : ICharacter()
 , _name(name)

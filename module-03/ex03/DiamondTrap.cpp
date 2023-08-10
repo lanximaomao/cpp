@@ -1,28 +1,13 @@
 #include <iostream>
 #include "DiamondTrap.hpp"
 
-// desired values are 100-50-30
-// the inheritance should follow the order defined in hpp file
-// the attribuates by default is from FragTrap
-DiamondTrap::DiamondTrap(std::string name)// 10-10-0
+DiamondTrap::DiamondTrap(std::string name)
 : ClapTrap(name + "ClapTrap")
-, ScavTrap(name) // 100-50-20
-, FragTrap(name) // 100-100-30
+, ScavTrap(name)
+, FragTrap(name)
 , _name (name)
 {
 	std::cout << "DiamondTrap " << name << " created\n";
-	//_health = FragTrap::_health;
-	//_energy = ScavTrap::_energy;
-	//_damage = FragTrap::_damage;
-
-	//setHealth(FragTrap::_health);
-	//setEnergy(ScavTrap::_energy);
-	//setDamage(FragTrap::_damage);
-
-	//FragTrap::_health = 100;
-	//ScavTrap::_energy = 50;
-	//ScavTrap::_damage = 30;
-
 	_health = 100;
 	_energy = 50;
 	_damage = 30;
@@ -41,22 +26,23 @@ DiamondTrap::~DiamondTrap()
 	std::cout << "DiamondTrap "<< _name << " got destoryed\n";
 }
 
+// first copy the parent class and then update the derived class atrributes
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other)
 {
 	std::cout << "DiamondTrap copy assignment operator called\n";
 	if (this != &other)
 	{
+		FragTrap::operator=(other);
+		ScavTrap::operator=(other);
 		_name = other._name;
-		_health = other._health;
-		_energy = other._energy;
-		_damage = other._damage;
 	}
 	return (*this);
 }
 
 void DiamondTrap::whoAmI(void) const
 {
-	std::cout << "I am " << _name << " in DiamondTrap. But, also I am " << ClapTrap::_name << std::endl;
+	std::cout << "I am " << _name << " in DiamondTrap. But, also I am "
+		<< ClapTrap::_name << std::endl;
 }
 
 

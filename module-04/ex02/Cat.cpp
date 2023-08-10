@@ -34,6 +34,8 @@ Cat& Cat::operator=(const Cat &other)
 	{
 		_name = other._name;
 		_type = other._type;
+		delete _tinyBrain;
+		_tinyBrain = new Brain();
 		_tinyBrain = other._tinyBrain;
 	}
 	return (*this);

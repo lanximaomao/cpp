@@ -10,6 +10,7 @@ class MateriaSource: public IMateriaSource
 {
 	private:
 		AMateria* _receipt[4];
+		AMateria* _garbage[1000];
 
 	public:
 		MateriaSource();

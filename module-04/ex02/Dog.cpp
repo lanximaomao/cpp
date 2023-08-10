@@ -27,7 +27,6 @@ Dog::Dog(const Dog &other): Animal(other._name)
 	_tinyBrain = new Brain();
 }
 
-// do i need to delete and recreate _tinyBrain?
 Dog& Dog::operator=(const Dog &other)
 {
 	std::cout << "Dog copy assignment operator called\n";
@@ -35,8 +34,8 @@ Dog& Dog::operator=(const Dog &other)
 	{
 		_name = other._name;
 		_type = other._type;
-		//delete _tinyBrain;
-		//_tinyBrain = new Brain();
+		delete _tinyBrain;
+		_tinyBrain = new Brain();
 		_tinyBrain = other._tinyBrain;
 	}
 	return (*this);

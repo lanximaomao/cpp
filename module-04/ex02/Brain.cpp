@@ -1,9 +1,6 @@
 #include "Brain.hpp"
 #include <sstream>
 
-// init ideas
-// ss.str() is to retrieve the contents of the stringstream object
-// as a standard std::string.
 Brain::Brain()
 {
 	std::cout << "Brain default constructor called\n";
@@ -20,14 +17,15 @@ Brain::Brain(Brain &other)
 	std::cout << "Brain copy constructor called\n";
 	*this = other;
 }
+
 Brain::~Brain()
 {
 	std::cout << "Brain destructor called\n";
 }
+
 Brain& Brain::operator=(Brain &other)
 {
 	std::cout << "Brain copy assignment called\n";
-	// copy ideas
 	for (size_t i = 0; i < _brainSize; i++)
 	{
 		_ideas[i] = other._ideas[i];
@@ -35,7 +33,6 @@ Brain& Brain::operator=(Brain &other)
 	return(*this);
 }
 
-// should we use nullptr or empty string?
 std::string Brain::getIdeas(size_t i)
 {
 	if (i >= _brainSize)

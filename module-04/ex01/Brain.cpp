@@ -1,7 +1,6 @@
 #include "Brain.hpp"
 #include <sstream>
 
-// init ideas
 // ss.str() is to retrieve the contents of the stringstream object
 // as a standard std::string.
 Brain::Brain()
@@ -26,7 +25,6 @@ Brain::~Brain()
 }
 Brain& Brain::operator=(Brain &other)
 {
-	//std::cout << "Brain copy assignment called\n";
 	for (size_t i = 0; i < _brainSize; i++)
 	{
 		_ideas[i] = other._ideas[i];
@@ -47,3 +45,11 @@ void Brain::setIdeas(size_t i, std::string& str)
 		return;
 	_ideas[i] = str;
 }
+
+//void Brain::copyIdeas(Brain &other)
+//{
+//	for (size_t i = 0; i < _brainSize; i++)
+//	{
+//		_ideas[i] = other._ideas[i];
+//	}
+//}
