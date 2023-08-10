@@ -53,7 +53,8 @@ Dog::~Dog()
 void Dog::makeSound() const
 {
 	std::cout << COLOR_RED;
-	std::cout << _type << " " << _name << " : Haw Haw Haw ~~~ \n";
+	std::cout << _type << " " << _name
+		<< " : Haw Haw Haw ~~~ \n";
 	std::cout << COLOR_RESET;
 }
 

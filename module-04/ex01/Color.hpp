@@ -1,7 +1,6 @@
 #ifndef COLOR_HPP
 # define COLOR_HPP
 
-// Define color escape sequences
 # define COLOR_RESET "\033[0m"
 # define COLOR_BLACK "\033[30m"
 # define COLOR_RED "\033[31m"

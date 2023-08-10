@@ -43,7 +43,6 @@ Cat& Cat::operator=(const Cat &other)
 	return (*this);
 }
 
-
 Cat::~Cat()
 {
 	std::cout << "Cat " << _name << " deconstructor called\n";
@@ -53,7 +52,8 @@ Cat::~Cat()
 void Cat::makeSound() const
 {
 	std::cout << COLOR_BLUE;
-	std::cout << _type << " " << _name << " : Miao Miao Miao ~~~\n";
+	std::cout << _type << " " << _name
+		<< " : Miao Miao Miao ~~~\n";
 	std::cout << COLOR_RESET;
 }
 

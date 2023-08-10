@@ -26,8 +26,7 @@ Brain::~Brain()
 }
 Brain& Brain::operator=(Brain &other)
 {
-	std::cout << "Brain copy assignment called\n";
-	// copy ideas
+	//std::cout << "Brain copy assignment called\n";
 	for (size_t i = 0; i < _brainSize; i++)
 	{
 		_ideas[i] = other._ideas[i];
@@ -35,7 +34,6 @@ Brain& Brain::operator=(Brain &other)
 	return(*this);
 }
 
-// should we use nullptr or empty string?
 std::string Brain::getIdeas(size_t i)
 {
 	if (i >= _brainSize)

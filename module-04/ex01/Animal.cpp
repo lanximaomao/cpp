@@ -20,7 +20,6 @@ Animal::Animal(const Animal &other)
 	*this = other;
 }
 
-// so the virtual keyword cannot be here
 Animal::~Animal()
 {
 	std::cout << "Animal deconstructed\n";
@@ -49,7 +48,8 @@ std::string Animal::getType() const
 void Animal::makeSound() const
 {
 	std::cout << COLOR_BLUE;
-	std::cout << _type << " " << _name << " : what sound should I make? \n";
+	std::cout << _type << " " << _name
+		<< " : what sound should I make? \n";
 	std::cout << COLOR_RESET;
 }
 
