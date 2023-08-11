@@ -9,7 +9,7 @@ Cure::Cure()
 }
 
 Cure::Cure(const Cure& other)
-:AMateria("cyre")
+:AMateria("cure")
 {
 	*this = other;
 }
@@ -27,11 +27,10 @@ Cure::~Cure()
 {
 	std::cout << "cure destructor called\n";
 }
-// make a deep copy
-Cure* Cure::clone() const
+
+AMateria* Cure::clone() const
 {
-	std::cout << "cloning cure\n";
-	return(new Cure());
+	return(new Cure(*this));
 }
 
 void Cure::use(ICharacter &target)

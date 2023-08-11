@@ -3,8 +3,8 @@
 #include <string>
 #include "AMateria.hpp"
 
-// forward declaration
 
+/** forward declaration */
 class AMateria;
 
 class ICharacter

@@ -23,8 +23,9 @@ Dog::Dog(const std::string name): Animal(name)
 Dog::Dog(const Dog &other): Animal(other._name)
 {
 	std::cout << "Dog copy constructor called\n";
-	*this = other;
-	_tinyBrain = new Brain();
+	_name = other._name;
+	_type = other._type;
+	_tinyBrain = new Brain(*other._tinyBrain);
 }
 
 Dog& Dog::operator=(const Dog &other)
@@ -34,8 +35,6 @@ Dog& Dog::operator=(const Dog &other)
 	{
 		_name = other._name;
 		_type = other._type;
-		delete _tinyBrain;
-		_tinyBrain = new Brain();
 		_tinyBrain = other._tinyBrain;
 	}
 	return (*this);

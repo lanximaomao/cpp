@@ -1,4 +1,4 @@
-NAME = Animal
+NAME = animal
 FLAGS = -std=c++98 -Wall -Wextra -Werror
 SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 OBJ = $(SRCS:.cpp=.o)

@@ -5,7 +5,7 @@
 Ice::Ice()
 : AMateria("ice")
 {
-	//std::cout << "ice constructor called\n";
+	std::cout << "ice constructor called\n";
 }
 
 Ice::Ice(const Ice& other)
@@ -25,14 +25,12 @@ Ice& Ice::operator=(const Ice& other)
 
 Ice::~Ice()
 {
-	//std::cout << "ice destructor called\n";
+	std::cout << "ice destructor called\n";
 }
 
-// make a deep copy
-Ice* Ice::clone() const
+AMateria* Ice::clone() const
 {
-	std::cout << "cloning ice\n";
-	return(new Ice());
+	return(new Ice(*this));
 }
 
 void Ice::use(ICharacter &target)

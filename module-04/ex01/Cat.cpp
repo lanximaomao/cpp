@@ -20,11 +20,13 @@ Cat::Cat(const std::string name): Animal(name)
 	_tinyBrain = new Brain();
 }
 
+/** use new to ensure a deep copy of the brain */
 Cat::Cat(const Cat &other): Animal(other._name)
 {
 	std::cout << "Cat copy constructor called\n";
-	_tinyBrain = new Brain();
-	*this = other;
+	_name = other._name;
+	_type = other._type;
+	_tinyBrain = new Brain(*other._tinyBrain);
 }
 
 Cat& Cat::operator=(const Cat &other)
@@ -34,9 +36,7 @@ Cat& Cat::operator=(const Cat &other)
 	{
 		_name = other._name;
 		_type = other._type;
-		_tinyBrain = new Brain();
-		for (size_t i = 0; i < 100; i++)
-			_tinyBrain = other._tinyBrain;
+		_tinyBrain = other._tinyBrain;
 	}
 	return (*this);
 }

@@ -5,7 +5,7 @@
 
 /*
 ** this is called forward declaration
-** they are useful to solve mutual dependencies
+** it's useful to solve mutual dependencies
 ** it provide a way to introduce names of entities
 ** before their full definitions
 */
@@ -14,16 +14,17 @@ class ICharacter;
 class AMateria
 {
 	protected:
-		std::string _type;
+		std::string	_type;
 
 	public:
+		AMateria*	_next;
 		AMateria(const std::string &type);
 		AMateria(const AMateria &other);
 		virtual ~AMateria();
 		AMateria& operator=(const AMateria &other);
 
-		const std::string& getType() const;
 
+		const std::string& getType() const;
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter &target);
 };

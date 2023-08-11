@@ -2,12 +2,10 @@
 # define ANIMAL_HPP
 # include <string>
 
-// do we need constructors?
 class Animal
 {
 	protected:
 		std::string _type;
-		std::string _name;
 
 	public:
 		Animal();
@@ -16,8 +14,6 @@ class Animal
 		virtual ~Animal();
 		Animal& operator=(const Animal &other);
 
-		//getters
-		std::string getName() const;
 		std::string getType() const;
 
 		virtual void makeSound() const;

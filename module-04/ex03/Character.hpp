@@ -3,16 +3,15 @@
 #include <string>
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
-
-// During copy, the Materias of a Character
-// must be deleted before the new ones are added to their inventory.
+#include "Garbage.hpp"
 
 class Character: public ICharacter
 {
 	private:
-		std::string _name;
-		static const size_t _size = 4;
-		AMateria* _inventory[_size];
+		std::string		_name;
+		static const	size_t _size = 4;
+		AMateria*		_slots[_size];
+		Garbage			_garbage;
 
 	public:
 		Character(const std::string name);

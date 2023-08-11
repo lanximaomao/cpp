@@ -6,16 +6,14 @@
 
 class Cure: public AMateria
 {
-	private:
-		std::string _type; // init to cure
 	public:
 		Cure();
 		Cure(const Cure& other);
 		Cure& operator=(const Cure& other);
-		~Cure();
+		virtual ~Cure();
 
-		Cure* clone() const;
-		void use(ICharacter &target);
+		virtual AMateria* clone() const;
+		virtual void use(ICharacter &target);
 };
 
 #endif

@@ -6,16 +6,14 @@
 
 class Ice: public AMateria
 {
-	private:
-		std::string _type; // init to ice
 	public:
 		Ice();
 		Ice(const Ice& other);
 		Ice& operator=(const Ice& other);
-		~Ice();
+		virtual ~Ice();
 
-		Ice* clone() const;
-		void use(ICharacter &target);
+		virtual AMateria* clone() const;
+		virtual void use(ICharacter &target);
 };
 
 #endif

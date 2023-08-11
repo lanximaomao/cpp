@@ -20,10 +20,14 @@ Dog::Dog(const std::string name): Animal(name)
 	_tinyBrain = new Brain();
 }
 
+/** the copy assignment of brain is used here to
+ * copy ideas from other to a new brain */
 Dog::Dog(const Dog &other): Animal(other._name)
 {
 	std::cout << "Dog copy constructor called\n";
-	*this = other;
+	_name = other._name;
+	_type = other._type;
+	_tinyBrain = new Brain(*other._tinyBrain);
 }
 
 Dog& Dog::operator=(const Dog &other)
@@ -33,9 +37,7 @@ Dog& Dog::operator=(const Dog &other)
 	{
 		_name = other._name;
 		_type = other._type;
-		_tinyBrain = new Brain();
-		for (size_t i = 0; i < 100; i++)
-			_tinyBrain = other._tinyBrain;
+		_tinyBrain = other._tinyBrain;
 	}
 	return (*this);
 }

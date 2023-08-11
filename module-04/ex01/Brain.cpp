@@ -1,8 +1,10 @@
 #include "Brain.hpp"
 #include <sstream>
 
-// ss.str() is to retrieve the contents of the stringstream object
-// as a standard std::string.
+/**
+ * ss.str() is to retrive the contents of the
+ * stringstream object as a stardard std::string
+ */
 Brain::Brain()
 {
 	std::cout << "Brain default constructor called\n";
@@ -19,10 +21,12 @@ Brain::Brain(Brain &other)
 	std::cout << "Brain copy constructor called\n";
 	*this = other;
 }
+
 Brain::~Brain()
 {
 	std::cout << "Brain destructor called\n";
 }
+
 Brain& Brain::operator=(Brain &other)
 {
 	for (size_t i = 0; i < _brainSize; i++)
@@ -45,11 +49,3 @@ void Brain::setIdeas(size_t i, std::string& str)
 		return;
 	_ideas[i] = str;
 }
-
-//void Brain::copyIdeas(Brain &other)
-//{
-//	for (size_t i = 0; i < _brainSize; i++)
-//	{
-//		_ideas[i] = other._ideas[i];
-//	}
-//}

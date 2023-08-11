@@ -5,6 +5,7 @@ AMateria::AMateria(std::string const &type)
 : _type(type)
 {
 	std::cout << "AMateria constructor called\n";
+	_next = NULL;
 }
 
 AMateria::AMateria(const AMateria& other)
@@ -17,13 +18,14 @@ AMateria::~AMateria()
 	std::cout << "AMateria destructor called\n";
 }
 
-// While assigning a Materia to another, copying the type doesn’t make sense?!
 AMateria& AMateria::operator=(const AMateria &other)
 {
-	//if (this != &other)
-	//{
-	//	_type = other._type;
-	//}
+	std::cout << "AMateria copy assignment called\n";
+	if (this != &other)
+	{
+		_type = other._type;
+		_next = other._next;
+	}
 	return (*this);
 }
 
