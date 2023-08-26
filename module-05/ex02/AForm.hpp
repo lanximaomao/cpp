@@ -5,21 +5,23 @@
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
-class Form
+class AForm
 {
 	private:
 		const std::string	_name;
 		bool				_is_signed;
 		const int			_required_signGrade;
 		const int			_required_execGrade;
-		Form();
+		AForm();
+
+	protected:
+		virtual void		executeAction() const = 0;
 
 	public:
-
-		Form(const std::string name, const int signGrade, const int execGrade);
-		Form(const Form& other);
-		Form& operator=(const Form& other);
-		~Form();
+		AForm(const std::string name, const int signGrade, const int execGrade);
+		AForm(const AForm& other);
+		AForm& operator=(const AForm& other);
+		virtual ~AForm();
 
 		class GradeTooHighException: std::exception
 		{
@@ -46,14 +48,15 @@ class Form
 		};
 
 		// member function
-		std::string	getName() const;
-		bool		getSigned() const;
-		int			getRequiredSignGrade() const;
-		int			getRequiredExecuteGrade() const;
+		std::string		getName() const;
+		bool			getSigned() const;
+		int				getRequiredSignGrade() const;
+		int				getRequiredExecuteGrade() const;
 
-		void		beSigned(Bureaucrat &bureaucrat);
+		void			beSigned(Bureaucrat &bureaucrat);
+		void			beExecuted(Bureaucrat const &executor);
 };
 
-std::ostream& operator<<(std::ostream& out, Form& form);
+std::ostream& operator<<(std::ostream& out, AForm& form);
 
 # endif

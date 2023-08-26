@@ -38,5 +38,7 @@ class Bureaucrat
 		void signForm(Form& form);
 };
 
+std::ostream& operator<<(std::ostream &out, Bureaucrat &bureaucrat);
+
 #endif
 

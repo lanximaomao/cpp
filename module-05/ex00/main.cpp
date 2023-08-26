@@ -1,22 +1,16 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-std::ostream& operator<<(std::ostream &out, Bureaucrat &cat)
-{
-	out << "Bureaucrat " << cat.getName() << " grade is: " << cat.getGrade();
-	return (out);
-}
-
 int main()
 {
 	try
 	{
-		Bureaucrat cat = Bureaucrat("officer1", 170);
-		std::cout << cat << std::endl;
-		cat.toIncrease();
-		std::cout << "After increase: " << cat << std::endl;
-		cat.toDecrease();
-		std::cout << "After decrease: " << cat << std::endl;
+		Bureaucrat bureaucrat = Bureaucrat("officer", 10);
+		std::cout << bureaucrat << std::endl;
+		bureaucrat.toIncrease();
+		std::cout << "After increase: " << bureaucrat << std::endl;
+		bureaucrat.toDecrease();
+		std::cout << "After decrease: " << bureaucrat << std::endl;
 
 	}
 	catch (Bureaucrat::GradeTooHighException &ex)

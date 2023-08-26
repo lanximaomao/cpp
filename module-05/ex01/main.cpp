@@ -2,50 +2,22 @@
 #include "Form.hpp"
 #include <iostream>
 
-std::ostream& operator<<(std::ostream &out, Bureaucrat &cat)
-{
-	out << "Bureaucrat " << cat.getName() << " grade is: " << cat.getGrade();
-	return (out);
-}
-
-std::ostream& operator<<(std::ostream& out, Form& form)
-{
-	std::string msg;
-
-	if (form.getSigned())
-		msg = " is signed. ";
-	else
-		msg = " is not signed. ";
-
-	std::cout << "Form: " << form.getName() << msg
-		<< " It requires " << form.getRequiredSignGrade() << " grade to sign and "
-		<< form.getRequiredExecuteGrade() << " grade to execute. "<< std::endl;
-
-	return (out);
-}
-
 int main()
 {
 	try
 	{
 		std::cout << "\n\n=====  Bureaucrat =====\n\n";
-		Bureaucrat officer1 = Bureaucrat("officer1", 11);
-		std::cout << officer1 << std::endl;
-		officer1.toIncrease();
-		std::cout << "After increase: " << officer1 << std::endl;
-		officer1.toDecrease();
-		std::cout << "After decrease: " << officer1 << std::endl;
+		Bureaucrat officer = Bureaucrat("officer", 10);
 
 		std::cout << "\n\n=====  Form =====\n\n";
-		Form form = Form("Big", 10, 20);
+		Form form = Form("Blueprint", 10, 20);
 		std::cout << form;
 
 		std::cout << "\n\n=====  sign Form =====\n\n";
-		officer1.signForm(form);
+		officer.signForm(form);
 
-		std::cout << "\n\n=====  be signed =====\n\n";
-		form.beSigned(officer1);
-
+		std::cout << "\n\n=====  test alreadySign exception =====\n\n";
+		//officer.signForm(form);
 	}
 	catch (Bureaucrat::GradeTooHighException& ex)
 	{
@@ -63,7 +35,10 @@ int main()
 	{
 		std::cout << ex.what() << std::endl;
 	}
-
+	catch (Form::AlreadySigned& ex)
+	{
+		std::cout << ex.what() << std::endl;
+	}
 	std::cout << "finished in main!" << std::endl;
 
 	return (0);

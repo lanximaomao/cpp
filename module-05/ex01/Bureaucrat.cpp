@@ -8,13 +8,13 @@ Bureaucrat:: Bureaucrat():_name("unknown"), _grade(1)
 }
 
 Bureaucrat:: Bureaucrat(const std::string name, const int grade)
+: _name(name)
+, _grade(grade)
 {
-	_name = name;
 	if (grade > 150)
 		throw GradeTooLowException();
 	else if (grade < 1)
 		throw GradeTooHighException();
-	_grade = grade;
 	std::cout << "parametric constructor is called for Bureaucrat " << _name << std::endl;
 }
 
@@ -63,21 +63,44 @@ int		Bureaucrat::getGrade() const
 	return (_grade);
 }
 
-void	Bureaucrat::signForm(Form& form)
+std::ostream& operator<<(std::ostream &out, Bureaucrat &bureaucrat)
 {
-	if (form.getSigned())
-		std::cout << _name << " signed " << form.getName() << std::endl;
-	else
-		std::cout << "bureaucrat " << _name << " couldn't sign " << form.getName()
-		<< " because his grade is too low! "<< std::endl;
+	out << "Bureaucrat " << bureaucrat.getName() << " grade is: " << bureaucrat.getGrade();
+	return (out);
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade is too high. Only grades between the range of 1 and 150 are allowed.");
+	return ("Bureaucrat: Grade is too high. ");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade is too low. Only grades between the range of 1 and 150 are allowed.");
+	return ("Bureaucrat: Grade is too low. ");
+}
+
+const char* Form::FormNotSigned::what() const throw()
+{
+	return("Form cannot be executed since it is not signed.");
+}
+
+const char* Form::AlreadySigned::what() const throw()
+{
+	return("Form it is already signed.");
+}
+
+void	Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch(Form::AlreadySigned &ex)
+	{
+		std::cerr << ex.what() << std::endl;
+	}
+	catch(Bureaucrat::GradeTooLowException &ex)
+	{
+		std::cerr << ex.what() << std::endl;
+	}
 }

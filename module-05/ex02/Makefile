@@ -1,6 +1,6 @@
-NAME = cat
+NAME = bureaucrat
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 .PHONY: all clean fclean re

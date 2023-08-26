@@ -4,6 +4,11 @@
 #include <string>
 #include <iostream>
 
+// throw(): This part specifies the exception specification.
+// It's a part of the older C++ exception handling mechanism.
+// It indicates that the function will not throw any exceptions itself.
+// In modern C++, this is largely replaced with the noexcept specifier.
+
 class Bureaucrat
 {
 	private:
@@ -37,5 +42,7 @@ class Bureaucrat
 		void		toDecrease();
 
 };
+
+std::ostream& operator<<(std::ostream &out, Bureaucrat &bureaucrat);
 
 #endif

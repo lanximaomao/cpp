@@ -1,4 +1,4 @@
-NAME = cat
+NAME = bureaucrat
 FLAGS = -std=c++98 -Wall -Wextra -Werror
 SRCS = main.cpp Bureaucrat.cpp
 OBJ = $(SRCS:.cpp=.o)

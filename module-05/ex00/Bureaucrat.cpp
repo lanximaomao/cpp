@@ -7,13 +7,13 @@ Bureaucrat:: Bureaucrat()
 }
 
 Bureaucrat:: Bureaucrat(const std::string name, const int grade)
+: _name(name)
+, _grade(grade)
 {
-	_name = name;
 	if (grade > 150)
 		throw GradeTooLowException();
 	else if (grade < 1)
 		throw GradeTooHighException();
-	_grade = grade;
 	std::cout << "parametric constructor is called for Bureaucrat " << _name << std::endl;
 }
 
@@ -61,12 +61,19 @@ int			Bureaucrat::getGrade() const
 	return (_grade);
 }
 
+std::ostream& operator<<(std::ostream &out, Bureaucrat &bureaucrat)
+{
+	out << "Bureaucrat " << bureaucrat.getName() << " grade is: " << bureaucrat.getGrade();
+	return (out);
+}
+
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade is too high. Only grades between the range of 1 and 150 are allowed.");
+	return ("Bureaucrat: Grade is too high. ");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade is too low. Only grades between the range of 1 and 150 are allowed.");
+	return ("Bureaucrat: Grade is too low. ");
 }
+

@@ -3,38 +3,30 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
 	try
 	{
+		std::cout << "\n\n=====  Intern make forms =====\n\n";
+		Intern 		someRandomIntern = Intern();
+		AForm*		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
 		std::cout << "\n\n=====  Bureaucrat =====\n\n";
-		Bureaucrat officer1 = Bureaucrat("officer1", 10);
+		Bureaucrat officer = Bureaucrat("officer", 10);
 
-		std::cout << "\n\n=====  Form =====\n\n";
-		AForm* f1 = new PresidentialPardonForm("Home");
-		AForm* f2 = new RobotomyRequestForm("Home");
-		AForm* f3 = new ShrubberyCreationForm("Home");
-
-		std::cout << *f1;
-		std::cout << *f2;
-		std::cout << *f3;
+		std::cout << *rrf;
 
 		std::cout << "\n\n=====  sign Form =====\n\n";
 
-		officer1.signForm(*f1);
-		//officer1.signForm(*f2);
-		//officer1.signForm(*f3);
+		officer.signForm(*rrf);
 
 		std::cout << "\n\n=====  exec Form =====\n\n";
-		officer1.executeForm(*f1);
-		//officer1.executeForm(*f2);
-		//officer1.executeForm(*f3);
+		officer.executeForm(*rrf);
 
 		std::cout << "\n\n=====  clean up =====\n\n";
-		delete f1;
-		delete f2;
-		delete f3;
+		delete rrf;
 	}
 	catch (Bureaucrat::GradeTooHighException& ex)
 	{
