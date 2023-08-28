@@ -32,7 +32,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
 		_grade = other._grade;
 	}
 	return (*this);
@@ -77,16 +76,6 @@ const char* Bureaucrat::GradeTooHighException::what() const throw()
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Bureaucrat: Grade is too low. ");
-}
-
-const char* Form::FormNotSigned::what() const throw()
-{
-	return("Form cannot be executed since it is not signed.");
-}
-
-const char* Form::AlreadySigned::what() const throw()
-{
-	return("Form it is already signed.");
 }
 
 void	Bureaucrat::signForm(Form& form)

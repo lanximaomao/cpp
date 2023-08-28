@@ -32,7 +32,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
 		_grade = other._grade;
 	}
 	return (*this);
@@ -104,10 +103,10 @@ void Bureaucrat::executeForm(AForm& form) const
 	}
 	catch (AForm::FormNotSigned)
 	{
-		std::cout << _name << " cann't execute " << form.getName() << " because it is not signed yet" << std::endl;
+		std::cout << _name << " cannot execute " << form.getName() << " because it is not signed yet" << std::endl;
 	}
 	catch(Bureaucrat:: GradeTooLowException)
 	{
-		std::cout << _name << " cann't execute " << form.getName() << " due to its grade is too low" << std::endl;
+		std::cout << _name << " cannot execute " << form.getName() << " due to its grade is too low" << std::endl;
 	}
 }

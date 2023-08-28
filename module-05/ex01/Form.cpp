@@ -91,6 +91,16 @@ const char* Form::GradeTooLowException::what() const throw()
 	return ("Form: Grade is too low. ");
 }
 
+const char* Form::FormNotSigned::what() const throw()
+{
+	return("Form cannot be executed since it is not signed.");
+}
+
+const char* Form::AlreadySigned::what() const throw()
+{
+	return("Form is already signed.");
+}
+
 void Form::beSigned(Bureaucrat &bureaucrat)
 {
 	if (_is_signed)
