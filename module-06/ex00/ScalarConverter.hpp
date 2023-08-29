@@ -5,14 +5,14 @@
 
 class ScalarConverter
 {
-private:
+	private:
 	ScalarConverter();
-	char	_asChar;
-	int		_asInt;
-	float	_asFloat;
-	double	_asDouble;
+	//static char	_asChar;
+	//static int		_asInt;
+	//static float	_asFloat;
+	//static double	_asDouble;
 
-public:
+	public:
 	ScalarConverter(const std::string& str);
 	ScalarConverter(const ScalarConverter& other);
 	ScalarConverter& operator=(const ScalarConverter& other);
