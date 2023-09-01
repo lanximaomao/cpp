@@ -15,8 +15,8 @@ int main(int argc, char** argv)
 		return (1);
 	}
 
-	//std::string input = argv[1];
-	ScalarConverter::converter(argv[1]);
+	std::string input = argv[1];
+	ScalarConverter::converter(input);
 
 	return (0);
 }

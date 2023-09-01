@@ -6,6 +6,7 @@
 class ScalarConverter
 {
 	private:
+	//static bool which_type(std::string& input);
 	ScalarConverter();
 	//static char	_asChar;
 	//static int		_asInt;
@@ -18,7 +19,7 @@ class ScalarConverter
 	ScalarConverter& operator=(const ScalarConverter& other);
 	~ScalarConverter();
 
-	static void converter(std::string input);
+	static void converter(std::string& input);
 };
 
 # endif
