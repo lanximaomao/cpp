@@ -1,5 +1,5 @@
 #include <iostream>
-#include <sstream>
+#include <cstdlib>
 
 #include "ScalarConverter.hpp"
 
@@ -29,34 +29,36 @@ std::ostream& operator<<(std::ostream& out, ScalarConverter& s)
 // ss.clear() is to clear any error floags that might have been set on the stream.
 // it is not used to clear the contents of the stream.
 
+//
+
 void ScalarConverter::converter(std::string input)
 {
-	std::stringstream ss(input);
-
-	int asInt = 0;
-	char asChar = 'a';
-	double asDouble = 0.0;
-	float asFloat = 0.0;
-
-	ss >> asChar;
-	ss.clear();
-	ss.seekg(0);
-
-	ss >> asInt;
-	ss.clear();
-	ss.seekg(0);
-
-	ss >> asFloat;
-	ss.clear();
-	ss.seekg(0);
-
-	ss >> asDouble;
-	ss.clear();
-	ss.seekg(0);
+	int asInt = atoi(input.c_str());
+	char asChar = *(input.c_str());
+	double asDouble = atof(input.c_str());
+	float asFloat = atof(input.c_str());
 
 	std::cout << "char: " << asChar <<std::endl;
 	std::cout << "int: " << asInt <<std::endl;
 	std::cout << "float: " << asFloat <<std::endl;
 	std::cout << "double: " << asDouble <<std::endl;
 
+	// -inff, +inff and nanf.
+	// -inf, +inf and nan
 }
+
+//./convert 0
+//char: Non displayable
+//int: 0
+//float: 0.0f
+//double: 0.0
+//./convert nan
+//char: impossible
+//int: impossible
+//float: nanf
+//double: nan
+//./convert 42.0f
+//char: '*'
+//int: 42
+//float: 42.0f
+//double: 42.0
