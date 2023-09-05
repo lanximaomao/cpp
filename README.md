@@ -5,14 +5,23 @@
 The cpp piscine include 10 submodules:
 
 [module 00](subjects/cpp_module00.pdf): classes, member functions, static, const and other basic stuff
+
 [module 01](subjects/cpp_module01.pdf): memory allocation, pointers to members, references, switch statement
+
 [module 02](subjects/cpp_module02.pdf): ad-hoc polymorphism, operator overloading and orthodox cannonical class form
+
 [module 03](subjects/cpp_module03.pdf): inheritance
+
 [module 04](subjects/cpp_module04.pdf): subtype polymorphism, abstract classes and interfaces
+
 [module 05](subjects/cpp_module05.pdf): repetition and Exceptions
+
 [module 06](subjects/cpp_module06.pdf): c++ casts
+
 [module 07](subjects/cpp_module07.pdf): c++ templates
+
 [module 08](subjects/cpp_module08.pdf): templated containers, iterators, algorithms
+
 [module 09](subjects/cpp_module09.pdf): STL
 
 <br>
