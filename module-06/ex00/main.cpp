@@ -1,11 +1,5 @@
 #include <iostream>
-
 #include "ScalarConverter.hpp"
-
-//static char	_asChar = 0;
-//static int		_asInt = 0;
-//static float	_asFloat = 0;
-//static double	_asDouble = 0;
 
 int main(int argc, char** argv)
 {

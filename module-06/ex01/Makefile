@@ -1,6 +1,6 @@
-NAME = convert
+NAME = serilizer
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp ScalarConverter.cpp
+SRCS = main.cpp Serializer.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 .PHONY: all clean fclean re
