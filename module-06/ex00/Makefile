@@ -1,5 +1,5 @@
 NAME = convert
-FLAGS = -std=c++98 -Wall -Wextra -Werror
+FLAGS = -std=c++98 -Wall -Wextra -Werror 
 SRCS = main.cpp ScalarConverter.cpp
 OBJ = $(SRCS:.cpp=.o)
 

@@ -3,10 +3,16 @@
 
 #include <string>
 
+enum ScalarType
+{
+	Special,
+	Valid_input,
+	Invalid_input
+};
+
 class ScalarConverter
 {
 	private:
-		static std::string which_type(const std::string& input);
 
 	public:
 		ScalarConverter();
