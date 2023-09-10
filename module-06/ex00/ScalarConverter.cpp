@@ -25,8 +25,6 @@ bool isSpecialChar(const std::string& input)
 		|| input == "+inff" || input == "-inf" || input == "-inff");
 }
 
-// +5, -5, +nan, 5f, 5ff, 0.5, 0..5, .f
-// 5.
 int which_type(const std::string& input)
 {
 	if (isSpecialChar(input))
