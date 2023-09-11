@@ -13,13 +13,12 @@ enum ScalarType
 class ScalarConverter
 {
 	private:
-
-	public:
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& other);
 		ScalarConverter& operator=(const ScalarConverter& other);
-		~ScalarConverter();
 
+	public:
+		~ScalarConverter();
 		static void converter(const std::string& input);
 };
 

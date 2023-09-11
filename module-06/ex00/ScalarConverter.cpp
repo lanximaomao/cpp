@@ -18,14 +18,14 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
 	return(*this);
 }
 
-bool isSpecialChar(const std::string& input)
+static bool isSpecialChar(const std::string& input)
 {
 	return (input == "nan" || input == "nanf"
 		||input == "inf" || input == "inff" || input == "+inf"
 		|| input == "+inff" || input == "-inf" || input == "-inff");
 }
 
-int which_type(const std::string& input)
+static int which_type(const std::string& input)
 {
 	if (isSpecialChar(input))
 		return (Special);
@@ -43,10 +43,10 @@ int which_type(const std::string& input)
 			hasFloatSpecifier = true;
 			if ((*(str+1)))
 				return Invalid_input;
-			return Valid_input;
+			return (Valid_input);
 		}
 		if (hasFloatSpecifier && *str == 'f')
-			return Invalid_input;
+			return (Invalid_input);
 
 		if (!hasDecimal && *str == '.')
 		{
@@ -54,22 +54,22 @@ int which_type(const std::string& input)
 			str++;
 		}
 		if (hasDecimal && *str == '.')
-			return Invalid_input;
+			return (Invalid_input);
 
 		if (!(*str >= '0' && (*str <= '9')))
-			return Invalid_input;
+			return (Invalid_input);
 		if (*str >= '0' && *str <= '9')
 			str++;
 	}
-	return Valid_input;
+	return (Valid_input);
 }
 
-bool isPrintableChar(char c)
+static bool isPrintableChar(char c)
 {
 	return ((c >= 32 && c <= 126) ? true : false);
 }
 
-void print_error_msg()
+static void print_error_msg()
 {
 	std::cout << "char: " << "impossible" <<std::endl;
 	std::cout << "int: " << "impossible" <<std::endl;
@@ -77,14 +77,14 @@ void print_error_msg()
 	std::cout << "double: " << "impossible" <<std::endl;
 }
 
-void print_special_msg(const std::string& input)
+static void print_special_msg(const std::string& input)
 {
 
 	std::cout << std::left << std::setw(10) << "char: " << "impossible" <<std::endl;
 	std::cout << std::left << std::setw(10) << "int: " << "impossible" <<std::endl;
 	if (input == "nan" || input == "nanf")
 	{
-		std::cout << std::left << std::setw(10) << "float: " << std::numeric_limits<float>::quiet_NaN() <<std::endl;
+		std::cout << std::left << std::setw(10) << "float: " << std::numeric_limits<float>::quiet_NaN() << "f" <<std::endl;
 		std::cout << std::left << std::setw(10) << "double: " << std::numeric_limits<double>::quiet_NaN() <<std::endl;
 	}
 	else if (input == "inf" || input == "+inf" || input == "+inff")
@@ -99,7 +99,7 @@ void print_special_msg(const std::string& input)
 	}
 }
 
-void printChar(double asDouble)
+static void printChar(double asDouble)
 {
 	if (asDouble < std::numeric_limits<char>::min() || asDouble > std::numeric_limits<char>::max())
 		std::cout << "char: impossible" <<std::endl;//?
@@ -113,7 +113,7 @@ void printChar(double asDouble)
 	}
 }
 
-void printInt(double asDouble)
+static void printInt(double asDouble)
 {
 	if (asDouble > std::numeric_limits<int>::max() || asDouble < std::numeric_limits<int>::min())
 		std::cout << "int: impossible" << std::endl;
@@ -124,7 +124,7 @@ void printInt(double asDouble)
 	}
 }
 
-void printFloat(double asDouble)
+static void printFloat(double asDouble)
 {
 	if (asDouble > std::numeric_limits<float>::max() || asDouble < -std::numeric_limits<float>::max())
 		std::cout << "float: impossible" << std::endl;
@@ -135,7 +135,7 @@ void printFloat(double asDouble)
 	}
 }
 
-void printDouble(double asDouble)
+static void printDouble(double asDouble)
 {
 	std::cout << "double: " << asDouble <<std::endl;
 }
