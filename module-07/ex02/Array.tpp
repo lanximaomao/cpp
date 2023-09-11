@@ -19,13 +19,11 @@ Array<T>::Array(unsigned int n)
 
 template <typename T>
 Array<T>::Array(const Array& other)
-:_array(new T(other.size()))
-,_size(other.size())
 {
+	_size = other._size;
+	_array = new T[_size];
 	for (size_t i = 0; i < _size; i++)
-	{
 		_array[i] = other._array[i];
-	}
 }
 
 template <typename T>
