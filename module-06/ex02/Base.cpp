@@ -16,7 +16,7 @@ Base* generate(void)
 
 void identify(Base* p)
 {
-	std::string type;
+	std::string type = "unknow";
 
 	if (dynamic_cast<A*>(p)) type = "A";
 	else if (dynamic_cast<B*>(p)) type = "B";
@@ -33,27 +33,18 @@ void identify(Base& p)
 		(void)dynamic_cast<A&>(p);
 		type = "A";
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	catch(const std::exception& e) {}
 	try
 	{
 		(void)dynamic_cast<B&>(p);
 		type = "B";
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	catch(const std::exception& e) {}
 	try
 	{
 		(void)dynamic_cast<C&>(p);
 		type = "C";
 	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	catch(const std::exception& e) {}
 	std::cout << "type is " << type << std::endl;
 }

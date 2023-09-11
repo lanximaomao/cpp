@@ -3,9 +3,13 @@
 
 int main()
 {
-	Base* ptr = generate();
+	Base *ptr = generate();
+	Base &ref = *ptr;
+
 	identify(ptr);
-	identify(&(*ptr));
+	identify(ref);
+
 	delete ptr;
-	return (0);
+
+	return 0;
 }
