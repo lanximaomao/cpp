@@ -1,5 +1,5 @@
 NAME = mutant
-FLAGS = -std=c++98 -Wall -Wextra -Werror
+FLAGS = -std=c++98 -Wall -Wextra -Werror -Wc++11-extensions
 SRCS = main.cpp
 OBJ = $(SRCS:.cpp=.o)
 
