@@ -15,12 +15,13 @@ int main()
 		test_random.getArray()[i] = random_value;
 		mirror[i] = random_value;
 	}
+	delete mirror;
 	for (size_t i = 0; i < MAX_VAL; i++)
 		std::cout << test_random.getArray()[i] << " ";
 	std::cout << std::endl;
 
 	std::cout << "\n\n=====  deep copy test =====\n\n";
-	Array<int> test_empty = Array<int>(0);
+	Array<int> test_empty = Array<int>();
 	std::cout << "old size = " << test_empty.size() << std::endl;
 	test_empty = test_random;
 	std::cout << "new size = " << test_empty.size() << std::endl;
@@ -36,7 +37,7 @@ int main()
 	std::cout << "\n\n=====  exception test =====\n\n";
 	try
 	{
-		test_empty[1] = 12;
+		test_random[-2] = 12;
 	}
 	catch(const std::exception& ex)
 	{
