@@ -11,7 +11,7 @@ class Span
 {
 	private:
 		unsigned int			_size;
-		std::vector<int>		_v1; // already initilized
+		std::vector<int>		_arr; // already initilized
 		Span();
 
 	public:
@@ -26,21 +26,23 @@ class Span
 		int		longestSpan() const;
 		std::vector<int>& getInt();
 
-	class ExceedFullCapacity: public std::exception
-	{
-		const char* what() const throw()
+		class ExceedFullCapacity: public std::exception
 		{
-			return ("exceed full capacity! ");
-		}
-	};
+			public:
+				const char* what() const throw()
+				{
+					return ("Exception: exceed full capacity! ");
+				}
+		};
 
-	class NoSpanFound: public std::exception
-	{
-		const char* what() const throw()
+		class NoSpanFound: public std::exception
 		{
-			return("no span can be found. inspect span size!");
-		}
-	};
+			public:
+				const char* what() const throw()
+				{
+					return("Exception: no span can be found. inspect span size!");
+				}
+		};
 };
 
 # endif

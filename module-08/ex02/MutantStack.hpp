@@ -6,25 +6,27 @@
 #include <deque>
 
 template <typename T>
+//template <typename T, class Container =  std::deque<T> >
+//class MutantStack : public std::stack<T, Container> >
 class MutantStack : public std::stack<T, std::deque<T> >
 {
 	public:
-		MutantStack();
+		MutantStack() {};
 		MutantStack(const MutantStack& other);
 		MutantStack& operator=(const MutantStack& other);
-		~MutantStack();
+		~MutantStack() {};
 
-		using iterator = typename std::deque<T>::iterator;
-		using const_iterator = typename std::deque<T>::const_iterator;
+		typedef typename std::deque<T>::iterator iterator;
+		typedef typename std::deque<T>::const_iterator const_iterator;
 
-		iterator begin() { return std::deque<T>::begin(); }
-		iterator end() { return std::deque<T>::end(); }
-		iterator rbegin() { return std::deque<T>::rbegin(); }
-		iterator rend() { return std::deque<T>::rend(); }
-		const_iterator cbegin() const { return std::deque<T>::cbegin(); }
-		const_iterator cend() const { return std::deque<T>::cend(); }
-		const_iterator crbegin() const { return std::deque<T>::crbegin(); }
-		const_iterator crend() const { return std::deque<T>::crend(); }
+		iterator begin() { return this->c.begin(); }
+		iterator end() { return this->c.end(); }
+		iterator rbegin() { return this->c.rbegin(); }
+		iterator rend() { return this->c.rend(); }
+		const_iterator cbegin() const { return this->c.cbegin(); }
+		const_iterator cend() const { return this->c.cend(); }
+		const_iterator crbegin() const { return this->c.crbegin(); }
+		const_iterator crend() const { return this->c.crend(); }
 };
 
 
