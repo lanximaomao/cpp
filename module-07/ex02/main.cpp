@@ -7,7 +7,7 @@ int main()
 {
 	std::cout << "\n\n=====  basic functionality test =====\n\n";
 	Array<int> test_random = Array<int>(MAX_VAL);
-	int* mirror = new int(MAX_VAL);
+	int* mirror = new int[MAX_VAL];
 	srand(time(NULL));
 	for (size_t i = 0; i < MAX_VAL; i++)
 	{
@@ -15,7 +15,7 @@ int main()
 		test_random.getArray()[i] = random_value;
 		mirror[i] = random_value;
 	}
-	delete mirror;
+	delete [] mirror;
 	for (size_t i = 0; i < MAX_VAL; i++)
 		std::cout << test_random.getArray()[i] << " ";
 	std::cout << std::endl;
