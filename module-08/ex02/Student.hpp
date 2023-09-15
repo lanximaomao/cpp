@@ -10,16 +10,16 @@ class Student
 		float			_score;
 	public:
 		Student();
-		Student(std::string name, float score);
 		~Student();
-		Student(Student& other);
-		Student& operator=(Student& other);
+		Student(const std::string name, const float score);
+		Student(const Student& other);
+		Student& operator=(const Student& other);
 
 		std::string&	getName();
 		float			getScore();
-		bool			operator>(Student& other);
-		bool			operator<(Student& other);
-		bool			operator==(Student& other);
+		bool			operator>(const Student& other);
+		bool			operator<(const Student& other);
+		bool			operator==(const Student& other);
 };
 
 std::ostream& operator<<(std::ostream& out, Student &s);

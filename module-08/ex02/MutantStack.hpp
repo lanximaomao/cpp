@@ -10,8 +10,8 @@ class MutantStack : public std::stack<T, U>
 {
 	public:
 		MutantStack() {};
-		MutantStack(const MutantStack& other);
-		MutantStack& operator=(const MutantStack& other);
+		MutantStack(const MutantStack& other) { *this = other; };
+		MutantStack& operator=(const MutantStack& other) {(void)other; return (*this); };
 		~MutantStack() {};
 
 		typedef typename std::deque<T>::iterator iterator;
