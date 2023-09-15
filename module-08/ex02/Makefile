@@ -1,6 +1,7 @@
 NAME = mutant
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp
+EXTENSION =  -Wc++11-extensions
+SRCS = main.cpp Student.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 .PHONY: all clean fclean re

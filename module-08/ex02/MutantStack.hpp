@@ -5,10 +5,8 @@
 #include <stack>
 #include <deque>
 
-template <typename T>
-//template <typename T, class Container =  std::deque<T> >
-//class MutantStack : public std::stack<T, Container> >
-class MutantStack : public std::stack<T, std::deque<T> >
+template <typename T, typename U >
+class MutantStack : public std::stack<T, U>
 {
 	public:
 		MutantStack() {};
@@ -18,15 +16,20 @@ class MutantStack : public std::stack<T, std::deque<T> >
 
 		typedef typename std::deque<T>::iterator iterator;
 		typedef typename std::deque<T>::const_iterator const_iterator;
+		typedef typename std::deque<T>::reverse_iterator reverse_iterator;
+		typedef typename std::deque<T>::const_reverse_iterator const_reverse_iterator;
 
 		iterator begin() { return this->c.begin(); }
 		iterator end() { return this->c.end(); }
-		iterator rbegin() { return this->c.rbegin(); }
-		iterator rend() { return this->c.rend(); }
+
 		const_iterator cbegin() const { return this->c.cbegin(); }
 		const_iterator cend() const { return this->c.cend(); }
-		const_iterator crbegin() const { return this->c.crbegin(); }
-		const_iterator crend() const { return this->c.crend(); }
+
+		reverse_iterator rbegin() { return this->c.rbegin(); }
+		reverse_iterator rend() { return this->c.rend(); }
+
+		const_reverse_iterator crbegin() const { return this->c.crbegin(); }
+		const_reverse_iterator crend() const { return this->c.crend(); }
 };
 
 
