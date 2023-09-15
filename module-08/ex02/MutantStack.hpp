@@ -5,14 +5,14 @@
 #include <stack>
 #include <deque>
 
-template <typename T, typename U >
-class MutantStack : public std::stack<T, U>
+template <typename T >
+class MutantStack : public std::stack<T, std::deque<T> >
 {
 	public:
 		MutantStack() {};
+		~MutantStack() {};
 		MutantStack(const MutantStack& other) { *this = other; };
 		MutantStack& operator=(const MutantStack& other) {(void)other; return (*this); };
-		~MutantStack() {};
 
 		typedef typename std::deque<T>::iterator iterator;
 		typedef typename std::deque<T>::const_iterator const_iterator;

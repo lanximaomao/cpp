@@ -3,18 +3,23 @@
 
 #include <vector>
 
-Span::Span() :_size(0) {}
+Span::Span() :_size(0), _data(0) {}
 
-Span::Span(const unsigned int size) :_size(size) {}
+Span::Span(const unsigned int size) :_size(size), _data(0) {}
 
 Span::Span(const Span& other)
 {
 	*this = other;
 }
 
-std::vector<int>& Span::getInt()
+std::vector<int>& Span::getData()
 {
-	return(_arr);
+	return(_data);
+}
+
+unsigned int Span::getSize()
+{
+	return(_size);
 }
 
 Span& Span::operator=(const Span& other)
@@ -22,9 +27,8 @@ Span& Span::operator=(const Span& other)
 	if (this == &other)
 		return (*this);
 	_size = other._size;
-	_arr.clear();
-	//_arr = other._arr;
-	std::copy(other._arr.begin(), other._arr.end(), std::back_inserter(_arr));
+	_data.clear();
+	std::copy(other._data.begin(), other._data.end(), std::back_inserter(_data));
 	return (*this);
 }
 
@@ -32,8 +36,8 @@ Span::~Span() {}
 
 void Span::addNumber(int n)
 {
-	if (_arr.size() < _size)
-		_arr.push_back(n);
+	if (_data.size() < _size)
+		_data.push_back(n);
 	else
 		throw Span::ExceedFullCapacity();
 }
@@ -41,30 +45,22 @@ void Span::addNumber(int n)
 /* const function requires using const_iterator */
 int Span::longestSpan() const
 {
-	if (_arr.size() < 2)
+	if (_data.size() < 2)
 		throw Span::NoSpanFound();
-	int max = std::numeric_limits<int>::min();
-	int min = std::numeric_limits<int>::max();
-	for (std::vector<int>::const_iterator it = _arr.begin(); it != _arr.end(); ++it)
-	{
-		if (*it > max)
-			max = *it;
-		if (*it < min)
-			min = *it;
-	}
-	return (max - min);
+	return (*std::max_element(_data.begin(), _data.end())
+		- *std::min_element(_data.begin(), _data.end()));
 }
 
 int Span::shortestSpan() const
 {
-	if (_arr.size() < 2)
+	if (_data.size() < 2)
 		throw Span::NoSpanFound();
 
 	int min_span = std::numeric_limits<int>::max();
 
-	for (std::vector<int>::const_iterator i = _arr.begin(); i != _arr.end(); ++i)
+	for (std::vector<int>::const_iterator i = _data.begin(); i != _data.end(); ++i)
 	{
-		for (std::vector<int>::const_iterator j = _arr.begin(); j != _arr.end(); ++j)
+		for (std::vector<int>::const_iterator j = _data.begin(); j != _data.end(); ++j)
 		{
 			if (i != j && (*i - *j < min_span))
 				min_span = abs(*i - *j);

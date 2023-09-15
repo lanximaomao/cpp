@@ -4,14 +4,11 @@
 #include <vector>
 #include <iostream>
 
-
-// should we consider other container type?
-
 class Span
 {
 	private:
 		unsigned int			_size;
-		std::vector<int>		_arr; // already initilized
+		std::vector<int>		_data;
 		Span();
 
 	public:
@@ -20,11 +17,22 @@ class Span
 		Span& operator=(const Span& other);
 		~Span();
 
-		// member functions
-		void	addNumber(int n);
-		int		shortestSpan() const;
-		int		longestSpan() const;
-		std::vector<int>& getInt();
+		std::vector<int>&	getData();
+		unsigned int		getSize();
+		void				addNumber(int n);
+
+		template <typename I>
+		void addManyNumber(I begin, I end)
+		{
+			while (begin != end)
+			{
+				addNumber(*begin);
+				begin++;
+			}
+		}
+
+		int					shortestSpan() const;
+		int					longestSpan() const;
 
 		class ExceedFullCapacity: public std::exception
 		{

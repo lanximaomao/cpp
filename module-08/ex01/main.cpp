@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <list>
 #include "Span.hpp"
 
 #define MAX_SIZE 5
@@ -51,4 +52,15 @@ int main()
 	{
 		std::cout << ex.what() << std::endl;
 	}
+
+	std::cout << "\n\n=====  add many numbers test =====\n\n";
+	std::list<int> myList(5, 1);
+	Span sp3 = Span(10);
+	sp3.addNumber(0);
+	sp3.addManyNumber(myList.begin(), myList.end());
+	for (size_t i = 0; i < 6; i++)
+	{
+		std::cout << sp3.getData()[i] << " ";
+	}
+	std::cout << std::endl;
 }
