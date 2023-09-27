@@ -1,8 +1,17 @@
 #include <iostream>
+#include "BitcoinExchange.hpp"
 
 
-int main()
+int main(int argc, char** argv)
 {
+	if (argc != 2)
+		return(1);
+
+	BitcoinExchange btc;
+	if (!btc.readDatabase())
+	{
+
+	}
 
 
 	return (0);
