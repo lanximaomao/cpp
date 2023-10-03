@@ -1,5 +1,11 @@
 #include <iostream>
 
+// edge case
+// ./RPN """ ""-"
+// what are the valid combination of numbers of operators?
+// only four operator allowed
+
+
 int main()
 {
 

@@ -1,6 +1,16 @@
 #include <iostream>
 #include "BitcoinExchange.hpp"
 
+// things to consider
+// leap year (note 2100 is not a leap year)
+// check valid month-date combinations. e.g. Sep 31 is not valid.
+// no extra space between data | value
+// extra newline in the inquiry can be allowed.. but multiple insert of data | value should not
+// if date is too early, msg error
+// if date is beyond current system time, msg error
+// if amout of bitcoin is above 1000, error. but +1000, or +1000.000 should be find
+// negative number should be zero
+// check for overflow
 
 int main(int argc, char** argv)
 {
