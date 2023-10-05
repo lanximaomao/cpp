@@ -15,15 +15,17 @@
 int main(int argc, char** argv)
 {
 	if (argc != 2)
-		return(1);
-
-	BitcoinExchange btc;
-	if (!btc.readDatabase())
 	{
-
+		std::cout << "Error: could not open file." << std::endl;
+		return(1);
 	}
 
+	BitcoinExchange btc;
 
+	if (btc.readDatabase("data.csv"))
+	{
+		btc.printResult(argv[1]);
+	}
 	return (0);
 }
 
@@ -55,3 +57,7 @@ int main(int argc, char** argv)
 //2012-01-11 => 1 = 7.1
 //Error: too large a number.
 //$>
+
+
+
+
