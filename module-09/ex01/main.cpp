@@ -1,4 +1,5 @@
 #include <iostream>
+#include "RPN.hpp"
 
 // edge case
 // ./RPN """ ""-"
@@ -6,10 +7,16 @@
 // only four operator allowed
 
 
-int main()
+int main(int argc, char** argv)
 {
+	if (argc != 2)
+	{
+		std::cout << "wrong number of arguments" << std::endl;
+		return (1);
+	}
 
-
+	if (RPN::calculateRPN(argv[1]))
+		std::cout << RPN::_rpn.top() << std::endl;
 	return (0);
 }
 

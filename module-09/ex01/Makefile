@@ -1,6 +1,6 @@
 NAME = RPN
 FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp
+SRCS = main.cpp RPN.cpp
 OBJ = $(SRCS:.cpp=.o)
 
 .PHONY: all clean fclean re
