@@ -11,11 +11,10 @@ class PmergeMe
 	private:
 
 	public:
-		static std::vector<int> _vbefore;
-		static std::vector<int> _vafter;
-
-		static std::list<int> _lbefore;
-		static std::list<int> _lafter;
+		static std::vector<int>		_vbefore;
+		static std::vector<int>		_vafter;
+		static std::list<int>		_lbefore;
+		static std::list<int>		_lafter;
 
 		PmergeMe();
 		PmergeMe(PmergeMe & other);
@@ -24,11 +23,12 @@ class PmergeMe
 		static bool readDataToVector(char** argv);
 		static bool readDataToList(char** argv);
 
-		static void sortInteger_inVector();
-		static void sortInteger_inList();
+		static void MergeInsertionSortVector();
+		static void MergeInsertionSortList();
 
 		static void printResult(double t_vector, double t_list);
 };
 
+#include "MergeSort.tpp"
 
 # endif

@@ -12,16 +12,21 @@ std::list<int> PmergeMe::_lafter;
 
 PmergeMe::PmergeMe()
 {
-
+	//
 }
 
 PmergeMe::PmergeMe(PmergeMe & other)
 {
-
+	*this = other;
 }
 
 PmergeMe & PmergeMe::operator=(PmergeMe & other)
 {
+	_vbefore = other._vbefore;
+	_vafter = other._vafter;
+	_lbefore = other._lbefore;
+	_lafter = other._lafter;
+
 	return (*this);
 }
 
@@ -46,12 +51,12 @@ bool PmergeMe::readDataToVector(char** argv)
 		num = strtol(*argv, NULL, 10);
 		if (errno != 0 || num > INT_MAX || num < INT_MIN)
 			return (false);
-		std::cout << num << " ";
+		//std::cout << num << " ";
 		_vbefore.push_back(num);
 
 		argv++;
 	}
-	std::cout << std::endl;
+	//std::cout << std::endl;
 	return (true);
 }
 
@@ -86,53 +91,60 @@ bool PmergeMe::readDataToList(char** argv)
 	return (true);
 }
 
-void mergeTwoContainer(std::vector<int> & intSeq, std::vector<int> & left, std::vector<int> & right)
+void PmergeMe::MergeInsertionSortVector()
 {
-	std::vector<int>::iterator lit = left.begin();
-	std::vector<int>::iterator lite = left.end();
+	std::vector<int>::iterator it = _vbefore.begin();
+	std::vector<int>::iterator mid = it + _vbefore.size() / 2;
+	std::vector<int>::iterator ite = _vbefore.end();
 
-	std::vector<int>::iterator rit = right.begin();
-	std::vector<int>::iterator rite = right.end();
+	std::vector<int> leftSeq(it, mid);
 
-	for (; lit != lite; lit++)
+	mergeSort(leftSeq); // in-place sorting?
+	std::cout << "HERE" << std::endl;
+	printSeq(leftSeq);
+	_vafter = leftSeq;
+	std::vector<int>::iterator lit = _vafter.begin();
+
+	while (mid != ite)
 	{
-		
-		for (; rit != rite; rit++)
-		{
-
-		}
+		while (*mid > *lit)
+			lit++;
+		_vafter.insert(lit, *mid);
+		mid++;
 	}
 }
 
-void mergeSort(std::vector<int> & int_seq)
+void PmergeMe::MergeInsertionSortList()
 {
-	std::vector<int>::iterator it = int_seq.begin();
-	std::vector<int>::iterator mid = it + int_seq.size() / 2;
-	std::vector<int>::iterator ite = int_seq.end();
+	std::list<int>	leftSeq;
+	std::list<int>	rightSeq;
 
-	if (int_seq.size() <= 1)
-		return;
+	std::list<int>::iterator it = _lbefore.begin();
+	for (size_t i = 0; i < _lbefore.size(); i++)
+	{
+		if (i < _lbefore.size()/2)
+			leftSeq.push_back(*it);
+		else
+			rightSeq.push_back(*it);
+		it++;
+	}
 
-	std::vector<int> left_seq(it, mid);
-	std::vector<int> right_seq(mid, ite);
 
-	mergeSort(left_seq);
-	mergeSort(right_seq);
 
-	mergeTwoContainer(int_seq, left_seq, right_seq);
-}
+	mergeSort(leftSeq);
+	_lafter = leftSeq;
+	std::list<int>::iterator lit = leftSeq.begin();
+	std::list<int>::iterator lite = leftSeq.end();
+	std::list<int>::iterator rit = rightSeq.begin();
+	std::list<int>::iterator rite = rightSeq.end();
 
-void PmergeMe::sortInteger_inVector()
-{
-	// break into pairs
-	// sort pairs
-	//
-
-}
-
-void PmergeMe::sortInteger_inList()
-{
-
+	while (rit != rite)
+	{
+		while (*rit > *lit)
+			lit++;
+		_lafter.insert(lit, *rit);
+		rit++;
+	}
 }
 
 
@@ -140,12 +152,19 @@ void PmergeMe::printResult(double t_vector, double t_list)
 {
 	int size = _vbefore.size();
 	std::cout << "Before: ";
-	for (size_t i = 0; i < size; i++)
-		std::cout << _vbefore[i] << " ";
+	//for (size_t i = 0; i < size; i++)
+	//	std::cout << _vbefore[i] << " ";
+
+	//std::cout << std::endl << "After: ";
+	//for (size_t i = 0; i < size; i++)
+	//	std::cout << _vafter[i] << " ";
+
+	for (std::vector<int>::iterator it = _vbefore.begin(); it != _vbefore.end(); it++)
+		std::cout << *it << " ";
 
 	std::cout << std::endl << "After: ";
-	for (size_t i = 0; i < size; i++)
-		std::cout << _vbefore[i] << " ";
+	for (std::vector<int>::iterator it = _vafter.begin(); it != _vafter.end(); it++)
+		std::cout << *it << " ";
 
 	std::cout << std::endl << "Time to process a range of " << size << " elements with std::vector: " << t_vector << std::endl;
 	std::cout << std::endl << "Time to process a range of " << size << " elements with std::list: " << t_list << std::endl;

@@ -10,20 +10,33 @@ int main(int argc, char** argv)
 	//for (size_t i = 1; i < argc; i++)
 	//	std::cout << argv[i] << std::endl;
 
-	//clock_t startTime = clock();
+	clock_t startTime = clock();
 	if (!PmergeMe::readDataToVector(++argv))
+	{
 		std::cout << "Error" << std::endl;
-	//PmergeMe::sortInteger_inVector();
-	//clock_t endTime = clock();
-	//double elapsedTimeVector = static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC;
+		return (1);
+	}
+	PmergeMe::MergeInsertionSortVector();
+	clock_t endTime = clock();
+	double elapsedTimeVector = static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC;
 
-	//clock_t startTime = clock();
-	//PmergeMe::readDataToList(argv);
-	//PmergeMe::sortInteger_inList();
-	//clock_t endTime = clock();
+	//startTime = clock();
+	//if (!PmergeMe::readDataToList(argv))
+	//{
+	//	std::cout << "Error" << std::endl;
+	//	return (1);
+	//}
+	//PmergeMe::MergeInsertionSortList();
+	//endTime = clock();
 	//double elapsedTimeList = static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC;
 
 	//PmergeMe::printResult(elapsedTimeVector, elapsedTimeList);
+
+	//for (std::vector<int>::iterator it = PmergeMe::_vbefore.begin(); it != PmergeMe::_vbefore.end(); it++)
+	//	std::cout << *it << " ";
+	std::cout <<  std::endl << "final sorting result: \n";
+	for (std::vector<int>::iterator it = PmergeMe::_vafter.begin(); it != PmergeMe::_vafter.end(); it++)
+		std::cout << *it << " ";
 
 	return (0);
 }
