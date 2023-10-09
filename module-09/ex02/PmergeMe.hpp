@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 
+
 class PmergeMe
 {
 	private:
@@ -20,8 +21,8 @@ class PmergeMe
 		PmergeMe(PmergeMe & other);
 		PmergeMe& operator=(PmergeMe & other);
 
-		static void readDataToVector(char** argv);
-		static void readDataToList(char** argv);
+		static bool readDataToVector(char** argv);
+		static bool readDataToList(char** argv);
 
 		static void sortInteger_inVector();
 		static void sortInteger_inList();

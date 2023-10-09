@@ -5,27 +5,26 @@
 int main(int argc, char** argv)
 {
 	if (argc == 1)
-	{
 		std::cout << "Error" << std::endl;
-	}
 
-	for (size_t i = 1; i < argc; i++)
-		std::cout << argv[i] << std::endl;
+	//for (size_t i = 1; i < argc; i++)
+	//	std::cout << argv[i] << std::endl;
 
-	clock_t startTime = clock();
-	PmergeMe::readDataToVector(argv);
-	PmergeMe::sortInteger_inVector();
-	clock_t endTime = clock();
-	double elapsedTimeVector = static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC;
+	//clock_t startTime = clock();
+	if (!PmergeMe::readDataToVector(++argv))
+		std::cout << "Error" << std::endl;
+	//PmergeMe::sortInteger_inVector();
+	//clock_t endTime = clock();
+	//double elapsedTimeVector = static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC;
 
-	clock_t startTime = clock();
-	PmergeMe::readDataToList(argv);
-	PmergeMe::sortInteger_inList();
-	clock_t endTime = clock();
-	double elapsedTimeList = static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC;
+	//clock_t startTime = clock();
+	//PmergeMe::readDataToList(argv);
+	//PmergeMe::sortInteger_inList();
+	//clock_t endTime = clock();
+	//double elapsedTimeList = static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC;
 
-	PmergeMe::printResult(elapsedTimeVector, elapsedTimeList);
-	
+	//PmergeMe::printResult(elapsedTimeVector, elapsedTimeList);
+
 	return (0);
 }
 
