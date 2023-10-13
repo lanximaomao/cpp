@@ -1,5 +1,6 @@
 #ifndef PMERGEME_JPP
 # define PMERGEME_JPP
+#define MIN_SIZE 5
 
 #include <iostream>
 #include <vector>
@@ -10,25 +11,33 @@ class PmergeMe
 {
 	private:
 
+		std::vector<int>		_vector;
+		std::list<int>			_list;
+
+		int				_size;
+
+		bool					_readDataToVector(char** argv);
+		bool 					_readDataToList(char** argv);
+
+
+		void	_sortInList(int start, int end);
+		void	_listMerge(int start, int mid, int end);
+		void	_listInsert(int start, int end);
+
+		void	_sortInVector(int start, int end);
+		void	_vectorMerge(int start, int mid, int end);
+		void	_vectorInsert(int start, int end);
+
+
+
+
 	public:
-		static std::vector<int>		_vbefore;
-		static std::vector<int>		_vafter;
-		static std::list<int>		_lbefore;
-		static std::list<int>		_lafter;
 
 		PmergeMe();
 		PmergeMe(PmergeMe & other);
 		PmergeMe& operator=(PmergeMe & other);
 
-		static bool readDataToVector(char** argv);
-		static bool readDataToList(char** argv);
-
-		static void MergeInsertionSortVector();
-		static void MergeInsertionSortList();
-
-		static void printResult(double t_vector, double t_list);
+		void action(char** argv);
 };
-
-#include "MergeSort.tpp"
 
 # endif
