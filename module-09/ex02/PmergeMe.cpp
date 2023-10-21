@@ -31,17 +31,20 @@ PmergeMe & PmergeMe::operator=(PmergeMe & other)
 
 bool PmergeMe::_readDataToVector(char** argv)
 {
-	std::string arg;
 	long		num;
+	std::string arg;
 	std::string	sign = "";
 	while (*argv)
 	{
+		std::cout << *argv << std::endl;
 		for (size_t i = 0; (*argv)[i]; i++)
 		{
 			if (i == 0 && *argv[0] == '+')
 				continue;
 			if (!std::isdigit((*argv)[i])) // handel non-digital output
+			{
 				return (false);
+			}
 		}
 		errno = 0;
 		num = strtol(*argv, NULL, 10);
@@ -52,20 +55,21 @@ bool PmergeMe::_readDataToVector(char** argv)
 		argv++;
 	}
 	_size = _vector.size();
+	std::cout << "size = " << _size << std::endl;
 	return (true);
 }
 
 /* duplicates? */
 bool PmergeMe::_readDataToList(char** argv)
 {
-	std::string arg;
 	long		num;
+	std::string arg;
 	std::string	sign = "";
 	while (*argv)
 	{
 		for (size_t i = 0; (*argv)[i]; i++)
 		{
-			if (i == 0 && *argv[0] == '+')
+			if (i == 0 && (*argv)[0] == '+')
 			{
 				sign += "+";
 				continue;
@@ -87,7 +91,6 @@ bool PmergeMe::_readDataToList(char** argv)
 }
 
 // helper function
-
 static double getTime()
 {
 
@@ -104,23 +107,27 @@ void PmergeMe::action(char** argv)
 	if (!_readDataToVector(argv))
 	{
 		std::cout << "Error" << std::endl;
-		//return;
+		return;
 	}
 	_sortInVector(0, _size - 1);
 	double end = getTime();
+	std::cout << "here" <<  std::endl;
 
-	double start2 = getTime();
-	if (!_readDataToList(argv))
-	{
-		std::cout << "Error" << std::endl;
-		//return;
-	}
-	_sortInList(0, _size - 1);
-	double end2 = getTime();
+	//double start2 = getTime();
+	//if (!_readDataToList(argv))
+	//{
+	//	std::cout << "Error" << std::endl;
+	//	return;
+	//}
+	//_sortInList(0, _size - 1);
+	//double end2 = getTime();
 
 	std::cout << "Before: ";
-	while (*argv++)
+	while (*argv)
+	{
 		std::cout << *argv << " ";
+		argv++;
+	}
 	std::cout << std::endl;
 
 	std::cout << "After: ";
@@ -129,7 +136,7 @@ void PmergeMe::action(char** argv)
 	std::cout << std::endl;
 
 	std::cout << std::endl << "Time to process a range of " << _size << " elements with std::vector: " << (end - start) << "us" << std::endl;
-	std::cout << std::endl << "Time to process a range of " << _size << " elements with std::vector: " << (end2 - start2) << "us"  << std::endl;
+	//std::cout << std::endl << "Time to process a range of " << _size << " elements with std::vector: " << (end2 - start2) << "us"  << std::endl;
 }
 
 //Before: 3 5 9 7 4
@@ -137,11 +144,12 @@ void PmergeMe::action(char** argv)
 //Time to process a range of 5 elements with std::[..] : 0.00031 us
 //Time to process a range of 5 elements with std::[..] : 0.00014 us
 
+// negative numbers
 void PmergeMe::_sortInList(int start, int end)
 {
 	if (start < end)
 	{
-		if (end - start > MIN_SIZE)
+		if (end - start >= MIN_SIZE)
 		{
 			int mid = start + (end - start) / 2;
 			_sortInList(start, mid);
@@ -164,60 +172,63 @@ void	PmergeMe::_listInsert(int start, int end)
 }
 
 // Merge Sort
-
 void PmergeMe::_sortInVector(int start, int end)
 {
-	//if (start < end)
-	//{
-	//	if (end - start > MIN_SIZE)
-	//	{
-	//		int mid = start + (end - start) / 2;
-	//		_sortInVector(start, mid);
-	//		_sortInVector(mid + 1, end);
-	//		_vectorMerge(start, mid, end);
-	//	}
-	//	else
-	//		_vectorInsert(start,end);
-	//}
+	std::cout << "calling with start=" << start << " end=" << end << std::endl;
+	if (start < end)
+	{
+		if (end - start >= MIN_SIZE)
+		{
+			int mid = start + (end - start) / 2;
+			_sortInVector(start, mid);
+			_sortInVector(mid + 1, end);
+			_vectorMerge(start, mid, end);
+		}
+		else
+			_vectorInsert(start,end);
+	}
 }
 
 void	PmergeMe::_vectorMerge(int start, int mid, int end)
 {
-	//int i, j;
+	int i, j, k;
 
-	//std::vector<int> left(mid - start + 1), right(end - mid);
+	std::vector<int> left(mid - start + 1), right(end - mid);
 
-	//for (i = 0; i < mid - start + 1; ++i)
-	//	left[i] = _vector[start + i];
-	//for (j = 0; j < end - mid; ++j)
-	//	right[j] = _vector[mid + 1 + j];
+	for (i = 0; i < mid - start + 1; i++)
+		left[i] = _vector[start + i];
+	for (j = 0; j < end - mid; j++)
+		right[j] = _vector[mid + 1 + j];
 
-	//i = 0;
-	//j = 0;
-	//int k = start;
+	i = 0;
+	j = 0;
+	k = start;
 
-	//while (i < mid - start + 1 && j < end - mid) {
-	//	if (left[i] <= right[j])
-	//		_vector[k++] = left[i++];
-	//	else
-	//		_vector[k++] = right[j++];
-	//}
-	//while (i < mid - start + 1)
-	//	_vector[k++] = left[i++];
+	while (i < mid - start + 1 && j < end - mid)
+	{
+		if (left[i] <= right[j])
+			_vector[k++] = left[i++];
+		else
+			_vector[k++] = right[j++];
+	}
 
-	//while (j < end - mid)
-	//	_vector[k++] = right[j++];
+	while (i < mid - start + 1)
+		_vector[k++] = left[i++];
+
+	while (j < end - mid)
+		_vector[k++] = right[j++];
 }
 
 void	PmergeMe::_vectorInsert(int start, int end)
 {
-	//for (int i = start + 1; i <= end; ++i)
-	//{
-	//	int current = _vector[i];
-	//	int j = i - 1;
-	//	for (; j >= start && _vector[j] > current; --j)
-	//		_vector[j + 1] = _vector[j];
-	//	_vector[j + 1] = current;
-	//}
+	int i, j, tmp;
+	for (i = start + 1; i <= end; i++)
+	{
+		tmp = _vector[i];
+		j = i - 1;
+		for (; j >= start && _vector[j] > tmp; j--)
+			_vector[j + 1] = _vector[j];
+		_vector[j + 1] = tmp;
+	}
 }
 

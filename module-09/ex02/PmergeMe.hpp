@@ -11,24 +11,22 @@ class PmergeMe
 {
 	private:
 
-		std::vector<int>		_vector;
-		std::list<int>			_list;
+		std::vector<int>	_vector;
+		std::list<int>		_list;
 
-		int				_size;
+		int					_size;
 
-		bool					_readDataToVector(char** argv);
-		bool 					_readDataToList(char** argv);
-
-
-		void	_sortInList(int start, int end);
-		void	_listMerge(int start, int mid, int end);
-		void	_listInsert(int start, int end);
-
-		void	_sortInVector(int start, int end);
-		void	_vectorMerge(int start, int mid, int end);
-		void	_vectorInsert(int start, int end);
+		bool				_readDataToVector(char** argv);
+		bool 				_readDataToList(char** argv);
 
 
+		void				_sortInList(int start, int end);
+		void				_listMerge(int start, int mid, int end);
+		void				_listInsert(int start, int end);
+
+		void				_sortInVector(int start, int end);
+		void				_vectorMerge(int start, int mid, int end);
+		void				_vectorInsert(int start, int end);
 
 
 	public:
