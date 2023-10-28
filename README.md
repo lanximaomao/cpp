@@ -39,3 +39,4 @@ The cpp piscine include 10 submodules:
 **2- Run program:**
 
 	./excutable_name
+	./PmergeMe `jot -r  3000 1 100000  | tr '\n' ' '` (in module-09/ex02)
