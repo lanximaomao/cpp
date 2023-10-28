@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <vector>
-#include <list>
+#include <deque>
 
 
 class PmergeMe
@@ -12,22 +12,21 @@ class PmergeMe
 	private:
 
 		std::vector<int>	_vector;
-		std::list<int>		_list;
+		std::deque<int>		_deque;
 
 		int					_size;
 
 		bool				_readDataToVector(char** argv);
-		bool 				_readDataToList(char** argv);
+		bool 				_readDataToDeque(char** argv);
 
 
-		void				_sortInList(int start, int end);
-		void				_listMerge(int start, int mid, int end);
-		void				_listInsert(int start, int end);
+		void				_sortInDeque(int start, int end);
+		void				_dequeMerge(int start, int mid, int end);
+		void				_dequeInsert(int start, int end);
 
 		void				_sortInVector(int start, int end);
 		void				_vectorMerge(int start, int mid, int end);
 		void				_vectorInsert(int start, int end);
-
 
 	public:
 
