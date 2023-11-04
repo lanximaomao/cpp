@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ctime>
 #include "PmergeMe.hpp"
 
 int main(int argc, char** argv)

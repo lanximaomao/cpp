@@ -4,7 +4,6 @@
 #include <iostream>
 #include <map>
 
-// deal with pull request
 class BitcoinExchange
 {
 	private:
@@ -15,6 +14,7 @@ class BitcoinExchange
 
 		bool	_addEntryToDatabase(std::string const & entry);
 		bool	_isLeapYear(int year);
+		bool	_isValidFormat(std::string const & line);
 		bool	_isValidDate(int year, int month, int day);
 		bool	_isValidEntry(std::string const & entry);
 

@@ -19,3 +19,4 @@ int main(int argc, char** argv)
 }
 
 
+// problems: make the class canonical; test the date | value format; 

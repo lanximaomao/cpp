@@ -45,10 +45,7 @@ bool	RPN::calculateRPN(std::string input)
 			RPN::_rpn.push(top);
 		}
 		else
-		{
-			std::cout << "Error" << std::endl;
 			return (false);
-		}
 	}
 	if (RPN::_rpn.size() == 1)
 		return (true);

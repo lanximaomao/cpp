@@ -1,12 +1,6 @@
 #include <iostream>
 #include "RPN.hpp"
 
-// edge case
-// ./RPN """ ""-"
-// what are the valid combination of numbers of operators?
-// only four operator allowed
-
-
 int main(int argc, char** argv)
 {
 	if (argc != 2)
@@ -17,6 +11,8 @@ int main(int argc, char** argv)
 
 	if (RPN::calculateRPN(argv[1]))
 		std::cout << RPN::_rpn.top() << std::endl;
+	else
+		std::cout << "Error" << std::endl;
 	return (0);
 }
 
