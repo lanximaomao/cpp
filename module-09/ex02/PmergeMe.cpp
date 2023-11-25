@@ -78,7 +78,6 @@ bool PmergeMe::_readDataToDeque(char** argv)
 		_deque.push_back(num);
 		argv++;
 	}
-	std::cout << std::endl;
 	return (true);
 }
 
