@@ -1,6 +1,6 @@
 #ifndef PMERGEME_JPP
 # define PMERGEME_JPP
-#define MIN_SIZE 5
+#define MIN_SIZE 2
 
 #include <iostream>
 #include <vector>

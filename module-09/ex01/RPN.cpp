@@ -39,6 +39,8 @@ bool	RPN::calculateRPN(std::string input)
 				top = RPN::_rpn.top() - top;
 			else if (token == '*')
 				top *= RPN::_rpn.top();
+			else if (token == '/' && top == 0)
+				return (false);
 			else if (token == '/')
 				top = RPN::_rpn.top() / top;
 			RPN::_rpn.pop();
